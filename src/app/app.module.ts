@@ -7,13 +7,15 @@ import { GuestComponent } from './guest/guest.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GuestComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
