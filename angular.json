@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "angular-laravel-sastra-minggu-app"
+  "defaultProject": "angular-laravel-sastra-minggu-app",
+  "cli": {
+    "analytics": "6e19d88f-de18-42ea-9801-6936b481b613"
+  }
 }
