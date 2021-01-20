@@ -10,12 +10,39 @@
                         </div>
                     </ng-template>  
                     <ng-template ngbPanelContent>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-                        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                        labore sustainable VHS.
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                              <th scope="col">Nama Pengarang</th>
+                              <th scope="col">Judul</th>
+                              <th scope="col">Jenis</th>
+                              <th scope="col">Media</th>
+                              <th scope="col">Tanggal Terbit</th>
+                              <th scope="col">Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ristirianto Adi</td>
+                                    <td>Tidak Ada Pesan Moral</td>
+                                    <td>Cerpen</td>
+                                    <td>Horison</td>
+                                    <td>2021/01/12</td>
+                                    <td>
+                                        <button type="button" class="btn btn-info">Lihat Bukti Pemuatan</button>
+                                    </td>
+                                </tr>
+                            <!-- <tr *ngFor="let country of countries; index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>
+                                <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+                                {{ country.name }}
+                              </td>
+                              <td>{{ country.area | number }}</td>
+                              <td>{{ country.population | number }}</td>
+                            </tr> -->
+                            </tbody>
+                          </table>
                     </ng-template>
                 </ngb-panel>
             </ngb-accordion>
