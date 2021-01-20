@@ -63,7 +63,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-laravel-sastra-minggu-app:build"
+            "browserTarget": "angular-laravel-sastra-minggu-app:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -74,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-laravel-sastra-minggu-app:build"
+            "browserTarget": "angular-laravel-sastra-minggu-app:build",
           }
         },
         "test": {

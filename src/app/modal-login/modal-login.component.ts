@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-modal-login',
@@ -16,7 +17,7 @@ export class ModalLoginComponent implements OnInit {
     password: ''
   });
 
-  constructor(public activeModal:NgbActiveModal,private formBuilder: FormBuilder) {}
+  constructor(public activeModal:NgbActiveModal,private formBuilder: FormBuilder, private authService:AuthService) {}
 
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class ModalLoginComponent implements OnInit {
   onSubmit(){
     console.log(this.loginForm.value.username)
     console.log(this.loginForm.value.password)
+    this.authService.authenticateAdmin(this.loginForm.value.username,this.loginForm.value.password)
     this.loginForm.reset();
   }
 
