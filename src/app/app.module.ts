@@ -32,7 +32,6 @@ import { HttpXsrfInterceptor } from './HttpXsrfInterceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // HttpClientXsrfModule
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'

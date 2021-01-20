@@ -28,20 +28,19 @@ export class AuthService {
     return "";
   }
 
+  //ini pake satu method authenticate aja, toh mau user mau admin, endpoint-nya sama2 login
+  //balikan dari servernya mestinya Auth:user(), terus dari situ diliat rolenya, dan diredirect
+  //berdasarkan role itu, entah ke AdminComponent atau ke UserComponent
+
   public authenticateAdmin(username,password){
-    //do all the sending to server authentication thing here
-    this.http.get<any>('/sanctum/csrf-cookie').pipe(
+    
+    this.http.get('/sanctum/csrf-cookie').pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
-      // console.log(data)
-      // localStorage.setItem("role","admin")
-      // this.router.navigate(['/admin']
       console.log(this.getCookie("laravel_session"))
-        // let headers = new HttpHeaders().set('X-XSRF-TOKEN',this.getCookie("XSRF-TOKEN"))
         this.http.post('/login',{username,password},{ withCredentials: true }).pipe(
-        // this.http.post('http://localhost:8000/login',{username,password}).pipe(  
         catchError((error:HttpErrorResponse)=>{
           return throwError(error || "server error")
         })
@@ -64,19 +63,26 @@ export class AuthService {
     this.router.navigate(['/user'])
   }
 
-  public isAuthenticatedAdmin(){
+  // public isAuthenticatedAdmin(){
+  //   // if(localStorage.getItem("loggedIn") == "true"){
+  //   if(localStorage.getItem("role") == "admin")
+  //     return true
+  //   return false
+  // }
+
+  public isAuthenticated(role){
     // if(localStorage.getItem("loggedIn") == "true"){
-    if(localStorage.getItem("role") == "admin")
+    if(localStorage.getItem("role") == role)
       return true
     return false
   }
 
-  public isAuthenticatedUser(){
-    if(localStorage.getItem("role") == "user")
-      return true
+  // public isAuthenticatedUser(){
+  //   if(localStorage.getItem("role") == "user")
+  //     return true
     
-    return false
-  }
+  //   return false
+  // }
 
   public logout(){
     localStorage.removeItem("role")
