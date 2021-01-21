@@ -35,6 +35,10 @@ export class RegisterModalComponent implements OnInit {
     this.errorUsername = true;
   }
 
+  closeModal(){
+    this.activeModal.dismiss('Cross click')
+  }
+
   onSubmit(){
     
     //reset error message

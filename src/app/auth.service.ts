@@ -99,6 +99,10 @@ export class AuthService {
         console.log(data.message)
         if(data.message == "username tidak tersedia"){
           registerModal.showErrorUsernameTidakTersedia()
+        }else if(data.message == "success"){
+          this.router.navigate(['user'])
+          registerModal.closeModal();
+          registerModal.registerForm.reset();
         }
       },
       error=>{
