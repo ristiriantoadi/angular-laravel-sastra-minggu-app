@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../auth.service';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
+import { RegisterModalComponent } from '../register-modal/register-modal.component';
 
 @Component({
   selector: 'app-navbar',
@@ -33,7 +34,10 @@ export class NavbarComponent implements OnInit {
 
   openLoginModal(){
     const modalRef = this.modalService.open(ModalLoginComponent);
-    modalRef.componentInstance.name = 'World';
+  }
+
+  openRegisterModal(){
+    const modalRef = this.modalService.open(RegisterModalComponent);
   }
 
   logout(){

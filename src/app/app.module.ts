@@ -13,6 +13,7 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpXsrfInterceptor } from './HttpXsrfInterceptor';
+import { RegisterModalComponent } from './register-modal/register-modal.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpXsrfInterceptor } from './HttpXsrfInterceptor';
     UserComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    RegisterModalComponent
   ],
   imports: [
     BrowserModule,

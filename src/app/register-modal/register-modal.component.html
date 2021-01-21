@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h4 class="modal-title">Register</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      Terjadi kesalahan. Silahkan mengulangi
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" formControlName="username"  id="username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="konfirmasi-password">Konfirmasi Password</label>
+        <input type="password" class="form-control" formControlName="konfirmasiPassword" id="konfirmasi-password" placeholder="Konfirmasi Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
