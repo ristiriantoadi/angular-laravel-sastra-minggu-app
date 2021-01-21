@@ -11,12 +11,13 @@ import { AuthService } from '../auth.service';
 })
 export class ModalLoginComponent implements OnInit {
 
-  // @Input() name;
   error=false;
+  errorUsernameKosong=false
+  errorPasswordKosong=false
 
   loginForm = this.formBuilder.group({
-    username: '',
-    password: ''
+    username: null,
+    password: null
   });
 
   constructor(public activeModal:NgbActiveModal,private formBuilder: FormBuilder, private authService:AuthService) {}
@@ -34,8 +35,30 @@ export class ModalLoginComponent implements OnInit {
   }
 
   onSubmit(){
+
+    console.log("submit")
+    console.log(this.loginForm.value.username)
+    //reset error
+    this.error=false;
+    this.errorPasswordKosong=false;
+    this.errorUsernameKosong = false;
+
+    //form tidak lengkap
+    if(this.loginForm.value.username == null || this.loginForm.value.password == null 
+      ||this.loginForm.value.username == '' || this.loginForm.value.password == ''){
+      console.log("Form tidak lengkap")
+      
+      if(this.loginForm.value.username == '' || this.loginForm.value.username == null){
+        this.errorUsernameKosong = true;
+      }
+      if(this.loginForm.value.password == '' || this.loginForm.value.password == null){
+        this.errorPasswordKosong = true;
+      }
+      return;
+    }
+
     this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password,this);
-    // this.loginForm.reset();
+    
   }
 
 }
