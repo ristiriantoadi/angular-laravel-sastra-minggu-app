@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpXsrfInterceptor } from './HttpXsrfInterceptor';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
+import { LaporanPemuatanAdminComponent } from './laporan-pemuatan-admin/laporan-pemuatan-admin.component';
+import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pemuatan-user.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { RegisterModalComponent } from './register-modal/register-modal.componen
     PageNotFoundComponent,
     NavbarComponent,
     ModalLoginComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    LaporanPemuatanAdminComponent,
+    LaporanPemuatanUserComponent
   ],
   imports: [
     BrowserModule,
