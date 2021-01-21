@@ -11,16 +11,26 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" formControlName="username"  id="username" placeholder="Username">
+        <input required type="text" class="form-control" formControlName="username"  id="username" placeholder="Username">
+        <small *ngIf="errorUsername" id="emailHelp" class="form-text text-danger">Username tidak tersedia</small>
+        <small *ngIf="errorUsernameKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
+      </div>
+      <div class="form-group">
+        <label for="nama-lengkap">Nama Lengkap</label>
+        <input required type="text" class="form-control" formControlName="namaLengkap"  id="nama-lengkap" placeholder="Nama Lengkap">
+        <small *ngIf="errorNamaLengkapKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+        <input required type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+        <small *ngIf="errorPasswordKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
       </div>
       <div class="form-group">
         <label for="konfirmasi-password">Konfirmasi Password</label>
-        <input type="password" class="form-control" formControlName="konfirmasiPassword" id="konfirmasi-password" placeholder="Konfirmasi Password">
+        <input required type="password" class="form-control" formControlName="konfirmasiPassword" id="konfirmasi-password" placeholder="Konfirmasi Password">
+        <small *ngIf="errorKonfirmasiPassword" id="emailHelp" class="form-text text-danger">Konfirmasi password keliru</small>
+        <small *ngIf="errorKonfirmasiPasswordKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
       </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>

@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   logout(){
-    return this.http.post("/logout",{}).pipe(
+    return this.http.post("/logout",{},{ withCredentials: true }).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })
@@ -79,43 +79,24 @@ export class AuthService {
     })
   }
 
-  // public authenticateAdmin(username,password){
+  public register(username,password,namaLengkap){
+    console.log("register")
+    console.log("Username: "+username)
+    console.log("Password: "+password)
+    console.log("Nama Lengkap: "+namaLengkap)
+
+    this.http.post("/register/user",{username,password,namaLengkap},{ withCredentials: true }).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    ).subscribe(data=>{
+      console.log(data)
+    },
+    error=>{
+      console.log(error)
+    })
     
-  //   this.http.get('/sanctum/csrf-cookie').pipe(
-  //     catchError((error:HttpErrorResponse)=>{
-  //       return throwError(error || "server error")
-  //     })
-  //   ).subscribe(data=>{
-  //     console.log(this.getCookie("laravel_session"))
-  //       this.http.post('/login',{username,password},{ withCredentials: true }).pipe(
-  //       catchError((error:HttpErrorResponse)=>{
-  //         return throwError(error || "server error")
-  //       })
-  //     ).subscribe(data=>{
-  //       console.log(data)
-  //     },
-  //       error=>{
-  //         console.log(error)
-  //     })
-  //   },
-  //   error=>{
-  //     console.log(error)
-  //   })
-  // }
-
-  // public authenticateUser(){
-  //   //do all the sending to server authentication thing here
-  //   // localStorage.setItem("loggedIn", "true");
-  //   localStorage.setItem("role","user")
-  //   this.router.navigate(['/user'])
-  // }
-
-  // public isAuthenticatedAdmin(){
-  //   // if(localStorage.getItem("loggedIn") == "true"){
-  //   if(localStorage.getItem("role") == "admin")
-  //     return true
-  //   return false
-  // }
+  }
 
   public isAuthenticated(role){
     // if(localStorage.getItem("loggedIn") == "true"){
