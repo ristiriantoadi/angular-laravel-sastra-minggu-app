@@ -29,12 +29,18 @@ export class AuthService {
           return throwError(error || "server error")
         })
       ).subscribe(user=>{
+
+        localStorage.setItem("username",user.username)
+        localStorage.setItem("namaLengkap",user.namaLengkap)
+        localStorage.setItem("role",user.role)
+        localStorage.setItem("id",user.id.toString())
+        
         if(user.role === "admin"){
           this.router.navigate(['admin']);
         }else{
           this.router.navigate(['user'])
         }
-        console.log("helloooo")
+
         loginModal.closeModal();
         loginModal.loginForm.reset();
       },
@@ -42,15 +48,17 @@ export class AuthService {
           console.log(error)
           loginModal.loginForm.reset();
           loginModal.showError();
-          // return false;
       })
     },
     error=>{
       console.log(error)
       loginModal.loginForm.reset();
       loginModal.showError();
-      // return false;
     })
+  }
+
+  getUsername(){
+    return localStorage.getItem("username");
   }
 
   // public authenticateAdmin(username,password){

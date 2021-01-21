@@ -5,9 +5,26 @@
     </button>
     <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
     <div [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}" id="navbarSupportedContent">
-        <div class="navbar-nav ml-auto">
+        
+        <div *ngIf="loggedIn;then thenBlock;else elseBlock">
+        </div>
+        
+        <ng-template #thenBlock>
+            <div class="navbar-nav ml-auto">
+                <span class="btn noHover">{{username}}</span>
+                <button type="button" class="btn btn-link">Logout</button>
+            </div>
+        </ng-template>
+        <ng-template #elseBlock>
+            <div class="navbar-nav ml-auto">
+                <button type="button" (click)="openLoginModal()" class="btn btn-link">Login</button>
+                <button type="button" class="btn btn-link">Register</button>
+            </div>
+        </ng-template>
+
+        <!-- <div class="navbar-nav ml-auto">
             <button type="button" (click)="openLoginModal()" class="btn btn-link">Login</button>
             <button type="button" class="btn btn-link">Register</button>
-        </div>
+        </div> -->
     </div>
 </nav>

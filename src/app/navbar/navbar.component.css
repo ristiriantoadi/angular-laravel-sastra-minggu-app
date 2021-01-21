@@ -1,0 +1,7 @@
+.username{
+    color:gray;
+}
+
+.noHover{
+    pointer-events: none;
+}
