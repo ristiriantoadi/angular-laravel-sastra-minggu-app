@@ -16,6 +16,8 @@ import { HttpXsrfInterceptor } from './HttpXsrfInterceptor';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { LaporanPemuatanAdminComponent } from './laporan-pemuatan-admin/laporan-pemuatan-admin.component';
 import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pemuatan-user.component';
+import { ReportComponent } from './report/report.component';
+import { NotifikasiComponent } from './notifikasi/notifikasi.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pe
     ModalLoginComponent,
     RegisterModalComponent,
     LaporanPemuatanAdminComponent,
-    LaporanPemuatanUserComponent
+    LaporanPemuatanUserComponent,
+    ReportComponent,
+    NotifikasiComponent
   ],
   imports: [
     BrowserModule,

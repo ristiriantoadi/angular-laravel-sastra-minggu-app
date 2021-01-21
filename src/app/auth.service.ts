@@ -37,9 +37,9 @@ export class AuthService {
         this.setUserData(user)
         
         if(user.role === "admin"){
-          this.router.navigate(['admin']);
+          this.router.navigate(['admin','laporan_pemuatan']);
         }else{
-          this.router.navigate(['user'])
+          this.router.navigate(['user','laporan_pemuatan'])
         }
 
         loginModal.closeModal();
@@ -101,7 +101,7 @@ export class AuthService {
           registerModal.showErrorUsernameTidakTersedia()
         }else if(data.message == "success"){
           this.setUserData(data.user)
-          this.router.navigate(['user'])
+          this.router.navigate(['user','laporan_pemuatan'])
           registerModal.closeModal();
           registerModal.registerForm.reset();
         }
