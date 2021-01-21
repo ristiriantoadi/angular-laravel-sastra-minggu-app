@@ -18,7 +18,7 @@ export class AuthService {
   //balikan dari servernya mestinya Auth:user(), terus dari situ diliat rolenya, dan diredirect
   //berdasarkan role itu, entah ke AdminComponent atau ke UserComponent
 
-  public authenticate(username,password,closeModalCallback){
+  public authenticate(username,password,loginModal){
     this.http.get('/sanctum/csrf-cookie').pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
@@ -29,22 +29,22 @@ export class AuthService {
           return throwError(error || "server error")
         })
       ).subscribe(user=>{
-        // console.log(user.id)
-        // this.activeModal.dismiss('Cross click');
-        // closeModalCallback();
         if(user.role === "admin"){
           this.router.navigate(['admin']);
         }else{
           this.router.navigate(['user'])
         }
-
+        console.log("helloooo")
+        loginModal.closeModal();
       },
         error=>{
           console.log(error)
+          // return false;
       })
     },
     error=>{
       console.log(error)
+      // return false;
     })
   }
 

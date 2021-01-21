@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -28,9 +29,8 @@ export class ModalLoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.loginForm.value.username)
-    console.log(this.loginForm.value.password)
-    this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password,this.closeModal)
+    //i dont know why this have to equal false, it should equal true, but this work
+    this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password,this);
     this.loginForm.reset();
   }
 
