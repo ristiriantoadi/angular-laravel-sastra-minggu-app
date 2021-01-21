@@ -18,6 +18,10 @@
     "/register/user": {
       "target": "http://localhost:8000",
       "secure": false
+    },
+    "/home": {
+      "target": "http://localhost:8000",
+      "secure": false
     }
 
 }

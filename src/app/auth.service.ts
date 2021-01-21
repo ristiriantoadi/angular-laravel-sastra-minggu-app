@@ -5,6 +5,7 @@ import { Observable,throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IUser } from './IUser';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { IRegisterMessage } from './IRegisterMessage';
 
 
 @Injectable({
@@ -85,18 +86,27 @@ export class AuthService {
     console.log("Password: "+password)
     console.log("Nama Lengkap: "+namaLengkap)
 
-    this.http.post("/register/user",{username,password,namaLengkap},{ withCredentials: true }).pipe(
+    this.http.get('/sanctum/csrf-cookie').pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
-      console.log(data)
+      this.http.post<IRegisterMessage>("/register/user",{username,password,namaLengkap},{ withCredentials: true }).pipe(
+        catchError((error:HttpErrorResponse)=>{
+          return throwError(error || "server error")
+        })
+      ).subscribe(data=>{
+        console.log(data.message)
+      },
+      error=>{
+        console.log(error)
+      })
     },
     error=>{
       console.log(error)
     })
-    
   }
+  
 
   public isAuthenticated(role){
     // if(localStorage.getItem("loggedIn") == "true"){
