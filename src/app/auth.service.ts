@@ -36,14 +36,17 @@ export class AuthService {
         }
         console.log("helloooo")
         loginModal.closeModal();
+        loginModal.loginForm.reset();
       },
         error=>{
           console.log(error)
+          loginModal.loginForm.reset();
           // return false;
       })
     },
     error=>{
       console.log(error)
+      loginModal.loginForm.reset();
       // return false;
     })
   }

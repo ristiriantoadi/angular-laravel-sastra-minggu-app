@@ -29,9 +29,8 @@ export class ModalLoginComponent implements OnInit {
   }
 
   onSubmit(){
-    //i dont know why this have to equal false, it should equal true, but this work
     this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password,this);
-    this.loginForm.reset();
+    // this.loginForm.reset();
   }
 
 }
