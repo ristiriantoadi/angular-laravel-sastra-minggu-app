@@ -26,7 +26,7 @@ export class ModalLoginComponent implements OnInit {
   onSubmit(){
     console.log(this.loginForm.value.username)
     console.log(this.loginForm.value.password)
-    this.authService.authenticateAdmin(this.loginForm.value.username,this.loginForm.value.password)
+    this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password)
     this.loginForm.reset();
   }
 
