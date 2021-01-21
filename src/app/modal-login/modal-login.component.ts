@@ -12,6 +12,7 @@ import { AuthService } from '../auth.service';
 export class ModalLoginComponent implements OnInit {
 
   // @Input() name;
+  error=false;
 
   loginForm = this.formBuilder.group({
     username: '',
@@ -22,6 +23,10 @@ export class ModalLoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  showError(){
+    this.error=true
   }
 
   closeModal(){

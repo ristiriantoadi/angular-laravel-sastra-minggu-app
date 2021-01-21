@@ -5,7 +5,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <!-- <p>Hello, {{name}}!</p> -->
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+      Username atau password salah
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="username">Username</label>
@@ -15,13 +17,6 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
       </div>
-      <!-- <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div> -->
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>
-  <!-- <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  </div> -->

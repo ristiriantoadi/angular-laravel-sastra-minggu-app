@@ -41,12 +41,14 @@ export class AuthService {
         error=>{
           console.log(error)
           loginModal.loginForm.reset();
+          loginModal.showError();
           // return false;
       })
     },
     error=>{
       console.log(error)
       loginModal.loginForm.reset();
+      loginModal.showError();
       // return false;
     })
   }
