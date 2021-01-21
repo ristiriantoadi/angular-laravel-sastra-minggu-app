@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable,throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IUser } from './IUser';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Injectable({
@@ -17,18 +18,25 @@ export class AuthService {
   //balikan dari servernya mestinya Auth:user(), terus dari situ diliat rolenya, dan diredirect
   //berdasarkan role itu, entah ke AdminComponent atau ke UserComponent
 
-  public authenticate(username,password){
+  public authenticate(username,password,closeModalCallback){
     this.http.get('/sanctum/csrf-cookie').pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
-        this.http.post<IUser>('/login',{username,password},{ withCredentials: true }).pipe(
+        this.http.post<IUser>('/api/login',{username,password},{ withCredentials: true }).pipe(
         catchError((error:HttpErrorResponse)=>{
           return throwError(error || "server error")
         })
       ).subscribe(user=>{
-        console.log(user.id)
+        // console.log(user.id)
+        // this.activeModal.dismiss('Cross click');
+        // closeModalCallback();
+        if(user.role === "admin"){
+          this.router.navigate(['admin']);
+        }else{
+          this.router.navigate(['user'])
+        }
 
       },
         error=>{

@@ -23,10 +23,14 @@ export class ModalLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeModal(){
+    this.activeModal.dismiss('Cross click')
+  }
+
   onSubmit(){
     console.log(this.loginForm.value.username)
     console.log(this.loginForm.value.password)
-    this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password)
+    this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password,this.closeModal)
     this.loginForm.reset();
   }
 
