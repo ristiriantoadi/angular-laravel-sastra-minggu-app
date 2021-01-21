@@ -35,9 +35,6 @@ export class ModalLoginComponent implements OnInit {
   }
 
   onSubmit(){
-
-    console.log("submit")
-    console.log(this.loginForm.value.username)
     //reset error
     this.error=false;
     this.errorPasswordKosong=false;

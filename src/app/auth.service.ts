@@ -15,9 +15,12 @@ export class AuthService {
 
   constructor(private router:Router, private http:HttpClient) { }
 
-  //ini pake satu method authenticate aja, toh mau user mau admin, endpoint-nya sama2 login
-  //balikan dari servernya mestinya Auth:user(), terus dari situ diliat rolenya, dan diredirect
-  //berdasarkan role itu, entah ke AdminComponent atau ke UserComponent
+  public setUserData(user){
+    localStorage.setItem("username",user.username)
+        localStorage.setItem("namaLengkap",user.namaLengkap)
+        localStorage.setItem("role",user.role)
+        localStorage.setItem("id",user.id.toString())
+  }
 
   public authenticate(username,password,loginModal){
     this.http.get('/sanctum/csrf-cookie').pipe(
@@ -31,10 +34,7 @@ export class AuthService {
         })
       ).subscribe(user=>{
 
-        localStorage.setItem("username",user.username)
-        localStorage.setItem("namaLengkap",user.namaLengkap)
-        localStorage.setItem("role",user.role)
-        localStorage.setItem("id",user.id.toString())
+        this.setUserData(user)
         
         if(user.role === "admin"){
           this.router.navigate(['admin']);
@@ -100,6 +100,7 @@ export class AuthService {
         if(data.message == "username tidak tersedia"){
           registerModal.showErrorUsernameTidakTersedia()
         }else if(data.message == "success"){
+          this.setUserData(data.user)
           this.router.navigate(['user'])
           registerModal.closeModal();
           registerModal.registerForm.reset();

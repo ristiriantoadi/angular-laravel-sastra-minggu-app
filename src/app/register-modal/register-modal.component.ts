@@ -44,7 +44,6 @@ export class RegisterModalComponent implements OnInit {
     //reset error message
     this.errorKonfirmasiPassword = false;
     this.errorUsername = false;
-    
     this.errorPasswordKosong=false;
     this.errorKonfirmasiPasswordKosong = false;
     this.errorUsernameKosong = false;
@@ -53,7 +52,9 @@ export class RegisterModalComponent implements OnInit {
 
     //form tidak lengkap
     if(this.registerForm.value.username == '' || this.registerForm.value.namaLengkap == ''
-    || this.registerForm.value.password == '' || this.registerForm.value.konfirmasiPassword == ''){
+    || this.registerForm.value.password == '' || this.registerForm.value.konfirmasiPassword == ''
+    || this.registerForm.value.username == null || this.registerForm.value.namaLengkap == null
+    || this.registerForm.value.password == null || this.registerForm.value.konfirmasiPassword == null){
       if(this.registerForm.value.username == ''){
         this.errorUsernameKosong = true;
       }

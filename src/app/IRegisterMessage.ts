@@ -1,3 +1,6 @@
+import { IUser } from './IUser';
+
 export interface IRegisterMessage{
-    message:String
+    message:String,
+    user:IUser
 }
