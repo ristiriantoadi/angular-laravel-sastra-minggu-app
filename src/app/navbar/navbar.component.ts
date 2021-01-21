@@ -36,4 +36,8 @@ export class NavbarComponent implements OnInit {
     modalRef.componentInstance.name = 'World';
   }
 
+  logout(){
+    this.auth.logout()
+  }
+
 }

@@ -6,6 +6,15 @@
     "/sanctum/csrf-cookie": {
       "target": "http://localhost:8000",
       "secure": false
+    },
+    "/logout": {
+      "target": "http://localhost:8000",
+      "secure": false
+    },
+    "/login": {
+      "target": "http://localhost:8000",
+      "secure": false
     }
+
 }
 

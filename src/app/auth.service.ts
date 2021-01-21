@@ -24,7 +24,7 @@ export class AuthService {
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
-        this.http.post<IUser>('/api/login',{username,password},{ withCredentials: true }).pipe(
+        this.http.post<IUser>('/login',{username,password},{ withCredentials: true }).pipe(
         catchError((error:HttpErrorResponse)=>{
           return throwError(error || "server error")
         })
@@ -59,6 +59,24 @@ export class AuthService {
 
   getUsername(){
     return localStorage.getItem("username");
+  }
+
+  logout(){
+    return this.http.post("/logout",{}).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    ).subscribe(data=>{
+        console.log(data)
+        localStorage.removeItem("role")
+        localStorage.removeItem("username")
+        localStorage.removeItem("namaLengkap")
+        localStorage.removeItem("id")
+        this.router.navigate([''])
+    },
+    error=>{
+      console.log(error)
+    })
   }
 
   // public authenticateAdmin(username,password){
@@ -113,8 +131,8 @@ export class AuthService {
   //   return false
   // }
 
-  public logout(){
-    localStorage.removeItem("role")
-    this.router.navigate(['/login'])
-  }
+  // public logout(){
+  //   localStorage.removeItem("role")
+  //   this.router.navigate(['/login'])
+  // }
 }

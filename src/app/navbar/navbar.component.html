@@ -12,7 +12,7 @@
         <ng-template #thenBlock>
             <div class="navbar-nav ml-auto">
                 <span class="btn noHover">{{username}}</span>
-                <button type="button" class="btn btn-link">Logout</button>
+                <button type="button" (click)="logout()" class="btn btn-link">Logout</button>
             </div>
         </ng-template>
         <ng-template #elseBlock>
