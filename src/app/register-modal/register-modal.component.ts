@@ -31,6 +31,10 @@ export class RegisterModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showErrorUsernameTidakTersedia(){
+    this.errorUsername = true;
+  }
+
   onSubmit(){
     
     //reset error message
@@ -69,7 +73,7 @@ export class RegisterModalComponent implements OnInit {
 
     this.auth.register(this.registerForm.value.username,
                         this.registerForm.value.password,
-                        this.registerForm.value.namaLengkap)
+                        this.registerForm.value.namaLengkap,this)
   }
 
 }

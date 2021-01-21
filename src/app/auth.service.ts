@@ -80,7 +80,7 @@ export class AuthService {
     })
   }
 
-  public register(username,password,namaLengkap){
+  public register(username,password,namaLengkap,registerModal){
     console.log("register")
     console.log("Username: "+username)
     console.log("Password: "+password)
@@ -97,6 +97,9 @@ export class AuthService {
         })
       ).subscribe(data=>{
         console.log(data.message)
+        if(data.message == "username tidak tersedia"){
+          registerModal.showErrorUsernameTidakTersedia()
+        }
       },
       error=>{
         console.log(error)
