@@ -2,7 +2,45 @@
 <div class="container-fluid">
     <div class="row mt-5">
         <div class="col-sm-11 mx-auto">
-            <ngb-accordion activeIds="ngb-panel-0">
+            <div class="card">
+                <h5 class="card-header">Laporan Pemuatan</h5>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nama Pengarang</th>
+                                <th scope="col">Judul</th>
+                                <th scope="col">Jenis</th>
+                                <th scope="col">Media</th>
+                                <th scope="col">Tanggal Terbit</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ristirianto Adi</td>
+                                <td>Tidak Ada Pesan Moral</td>
+                                <td>Cerpen</td>
+                                <td>Horison</td>
+                                <td>2021/01/12</td>
+                                <td>
+                                    <button type="button" class="btn btn-info">Lihat Bukti Pemuatan</button>
+                                </td>
+                            </tr>
+                        <!-- <tr *ngFor="let country of countries; index as i">
+                          <th scope="row">{{ i + 1 }}</th>
+                          <td>
+                            <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+                            {{ country.name }}
+                          </td>
+                          <td>{{ country.area | number }}</td>
+                          <td>{{ country.population | number }}</td>
+                        </tr> -->
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <!-- <ngb-accordion activeIds="ngb-panel-0">
                 <ngb-panel>
                     <ng-template ngbPanelHeader let-opened="opened">
                         <div class="d-flex align-items-center justify-content-between">
@@ -31,7 +69,7 @@
                                     <td>
                                         <button type="button" class="btn btn-info">Lihat Bukti Pemuatan</button>
                                     </td>
-                                </tr>
+                                </tr> -->
                             <!-- <tr *ngFor="let country of countries; index as i">
                               <th scope="row">{{ i + 1 }}</th>
                               <td>
@@ -41,11 +79,11 @@
                               <td>{{ country.area | number }}</td>
                               <td>{{ country.population | number }}</td>
                             </tr> -->
-                            </tbody>
+                            <!-- </tbody>
                           </table>
                     </ng-template>
                 </ngb-panel>
-            </ngb-accordion>
+            </ngb-accordion> -->
         </div>
     </div>
 </div>
