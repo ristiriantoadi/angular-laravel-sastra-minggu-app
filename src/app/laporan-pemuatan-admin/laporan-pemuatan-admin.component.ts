@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddEntriModalComponent } from '../add-entri-modal/add-entri-modal.component';
 
 @Component({
   selector: 'app-laporan-pemuatan-admin',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaporanPemuatanAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
+  }
+
+  openAddEntriModal(){
+    const modalRef = this.modalService.open(AddEntriModalComponent);
+    // modalRef.componentInstance.name = 'World';//this is not necessary
   }
 
 }
