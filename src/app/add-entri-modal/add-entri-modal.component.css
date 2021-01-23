@@ -1,0 +1,8 @@
+.add-entri-modal{
+    /* max-height:200px; */
+    max-height: calc(100vh - 200px);
+}
+
+.modal-large{
+    width: 80vh;
+}

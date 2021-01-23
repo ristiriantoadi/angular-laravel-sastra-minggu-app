@@ -1,28 +1,53 @@
-<div class="modal-header">
+  <div class="modal-header">
     <h4 class="modal-title">Tambah Entri Pemuatan</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="judul">Judul</label>
-        <input type="text" class="form-control" formControlName="judul"  id="judul" placeholder="Judul karya">
-        <!-- <small *ngIf="errorUsernameKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
-      </div>
-      <div class="form-group">
-        <label for="nama-pengarang">Nama Pengarang</label>
-        <input type="text" class="form-control" formControlName="namaPengarang" id="nama-pengarang" placeholder="Nama pengarang">
-        <!-- <small *ngIf="errorPasswordKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
-      </div>
-      <!-- tanggal terbit
-      media
-      jenis
-      bukti pemuatan -->
-      <button type="submit" class="btn btn-primary">Tambah Entri</button>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  <div class="modal-body overflow-auto add-entri-modal">
+    <!-- <div class="modal-body"> -->
+      <form [formGroup]="AddEntriForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nama-pengarang">Nama Pengarang</label>
+                <input type="text" class="form-control" formControlName="namaPengarang"  id="nama-pengarang" placeholder="Nama Pengarang">
+                <!-- <small *ngIf="errorUsernameKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+              </div>
+              <div class="form-group">
+                <label for="judul">Judul</label>
+                <input type="text" class="form-control" formControlName="judul"  id="judul" placeholder="Judul">
+              </div>
+              <div class="form-group">
+                <label for="jenis-karya">Jenis Karya</label>
+                <select id="jenis-karya" class="form-control" formControlName="jenisKarya">
+                  <option selected value="cerpen">Cerpen</option>
+                  <option value="puisi">Puisi</option>
+                  <option value="esai">Esai</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="media">Media</label>
+                <input type="text" class="form-control" formControlName="media"  id="media" placeholder="Media">
+              </div>
+              <div class="form-group">
+                <label for="tanggal-muat">Tanggal Muat</label>
+                <input type="date" class="form-control" formControlName="tanggalMuat"  id="tanggal-muat">
+              </div>
+              <div class="form-group">
+                <label for="bukti-pemuatan">Bukti Pemuatan</label>
+                <input type="file" class="form-control-file" formControlName="buktiPemuatan"  id="bukti-pemuatan">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button type="submit" class="btn btn-primary">Tambah Entri</button>
+            </div>
+          </div>
+        </div>
+      </form>
   </div>
