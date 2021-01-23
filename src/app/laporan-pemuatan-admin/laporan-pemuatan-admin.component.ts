@@ -15,7 +15,7 @@ export class LaporanPemuatanAdminComponent implements OnInit {
   }
 
   openAddEntriModal(){
-    const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true});
+    const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true,windowClass:'centered'});
     // modalRef.componentInstance.name = 'World';//this is not necessary
   }
 

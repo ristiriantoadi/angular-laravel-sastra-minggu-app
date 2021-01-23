@@ -16,7 +16,8 @@ export class AddEntriModalComponent implements OnInit {
     namaPengarang:null,
     media:null,
     tanggalMuat:null,
-    jenisKarya:null    
+    jenisKarya:null,
+    buktiPemuatan:null    
   });
 
   constructor(private formBuilder: FormBuilder,public activeModal:NgbActiveModal) {}

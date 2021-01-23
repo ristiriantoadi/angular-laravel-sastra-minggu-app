@@ -1,8 +1,6 @@
-.add-entri-modal{
-    /* max-height:200px; */
-    max-height: calc(100vh - 200px);
-}
-
-.modal-large{
-    width: 80vh;
+.centered{
+    display:flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
 }

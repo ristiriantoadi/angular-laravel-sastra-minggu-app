@@ -1,0 +1,6 @@
+.centered{
+    display:flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+}
