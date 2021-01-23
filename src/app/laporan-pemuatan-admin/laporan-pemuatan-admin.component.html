@@ -26,6 +26,23 @@
                         <a href="#">Link</a>
                     </td>
                 </tr>
+                <!-- 'nama_pengarang',
+                'judul_karya',
+                'jenis_karya',
+                'media',
+                'tanggal_muat',
+                'user_id_pengarang',
+                'user_id_pembuat_entri' -->
+                <tr *ngFor="let entri of entris">
+                    <td>{{entri.nama_pengarang}}</td>
+                    <td>{{entri.judul_karya}}</td>
+                    <td>{{entri.jenis_karya}}</td>
+                    <td>{{entri.media}}</td>
+                    <td>{{entri.tanggal_muat}}</td>
+                    <td>
+                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id]">Link</a>
+                    </td>
+                </tr>
             </tbody>
           </table>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddEntriModalComponent } from '../add-entri-modal/add-entri-modal.component';
+import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 
 @Component({
   selector: 'app-laporan-pemuatan-admin',
@@ -9,14 +10,37 @@ import { AddEntriModalComponent } from '../add-entri-modal/add-entri-modal.compo
 })
 export class LaporanPemuatanAdminComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,private laporanPemuatanService:LaporanPemuatanService) {}
+
+  entris=[]
 
   ngOnInit(): void {
+    this.updateDataLaporanPemuatan();
   }
 
-  openAddEntriModal(){
-    const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true,windowClass:'centered'});
-    // modalRef.componentInstance.name = 'World';//this is not necessary
+  
+  updateDataLaporanPemuatan(){
+    this.laporanPemuatanService.getLaporanPemuatan()
+    .subscribe(data=>{
+      this.entris = data.entris
+      console.log(this.entris)
+    },
+    error=>{
+      console.log(error)
+    })
   }
+  
+
+  openAddEntriModal(){
+    const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true});
+    modalRef.result.then((result) => {
+      console.log("modal closed")
+      this.updateDataLaporanPemuatan();
+    }, (reason) => {
+      console.log('Dismissed action: ' + reason);
+    });
+  }
+
+  
 
 }

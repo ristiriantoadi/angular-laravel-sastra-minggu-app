@@ -38,21 +38,22 @@ export class AddEntriModalComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("called")
-    console.log(this.addEntriForm.value.judul)
     this.dataEntri.judul = this.addEntriForm.value.judul;
     this.dataEntri.namaPengarang = this.addEntriForm.value.namaPengarang;
     this.dataEntri.media = this.addEntriForm.value.media;
     this.dataEntri.tanggalMuat = this.addEntriForm.value.tanggalMuat;
     this.dataEntri.jenisKarya = this.addEntriForm.value.jenisKarya;
     this.dataEntri.buktiPemuatan = this.fileBuktiPemuatan;
-    console.log(this.dataEntri);
-    this.laporanPemuatanService.addEntri(this.dataEntri);
+    this.laporanPemuatanService.addEntri(this.dataEntri,this);
   }
 
   handleFileInput(files: FileList) {
     console.log(files.item(0));
     this.fileBuktiPemuatan=files.item(0);
+  }
+
+  close(){
+    this.activeModal.close('success');
   }
 
 }
