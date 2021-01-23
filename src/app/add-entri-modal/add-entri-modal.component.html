@@ -6,7 +6,7 @@
   </div>
   <div class="modal-body overflow-auto add-entri-modal">
     <!-- <div class="modal-body"> -->
-      <form [formGroup]="AddEntriForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="addEntriForm" (ngSubmit)="onSubmit()">
         <div class="container">
           <div class="row">
             <div class="col-md-6">
@@ -39,7 +39,8 @@
               </div>
               <div class="form-group">
                 <label for="bukti-pemuatan">Bukti Pemuatan</label>
-                <input type="file" class="form-control-file" formControlName="buktiPemuatan" id="bukti-pemuatan">
+                <input type="file" class="form-control-file" (change)="handleFileInput($event.target.files)" id="bukti-pemuatan">
+                <!-- <input type="file" class="form-control-file" id="bukti-pemuatan"> -->
               </div>
             </div>
           </div>
