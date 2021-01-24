@@ -17,14 +17,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Ristirianto Adi</td>
-                                <td>Tidak Ada Pesan Moral</td>
-                                <td>Cerpen</td>
-                                <td>Horison</td>
-                                <td>2021/01/12</td>
+                            <tr *ngFor="let entri of entris">
+                                <td>{{entri.nama_pengarang}}</td>
+                                <td>{{entri.judul_karya}}</td>
+                                <td>{{entri.jenis_karya}}</td>
+                                <td>{{entri.media}}</td>
+                                <td>{{entri.tanggal_muat}}</td>
                                 <td>
-                                    <a href="#">Link</a>
+                                    <a [routerLink]="['/storage/bukti_pemuatan',entri.id]">Link</a>
                                 </td>
                             </tr>
                         </tbody>

@@ -27,7 +27,7 @@ export class AddEntriModalComponent implements OnInit {
     namaPengarang:null,
     media:null,
     tanggalMuat:null,
-    jenisKarya:null,
+    jenisKarya:'cerpen',
     buktiPemuatan:null    
   });
 
