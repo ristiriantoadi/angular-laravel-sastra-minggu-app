@@ -12,7 +12,11 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="nama-pengarang">Nama Pengarang</label>
-                <input type="text" class="form-control" formControlName="namaPengarang"  id="nama-pengarang" placeholder="Nama Pengarang">
+                <input (input)="getPengarangs()" (change)="namaPengarangChosen()" list="pengarangs" type="text" class="form-control" formControlName="namaPengarang"  id="nama-pengarang" placeholder="Nama Pengarang">
+                <datalist id="pengarangs">
+                  <option *ngFor="let pengarang of pengarangs" value="{{pengarang.nama_lengkap}}">
+                
+                </datalist>
                 <!-- <small *ngIf="errorUsernameKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
               </div>
               <div class="form-group">

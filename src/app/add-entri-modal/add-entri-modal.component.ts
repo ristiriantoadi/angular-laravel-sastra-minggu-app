@@ -14,13 +14,17 @@ export class AddEntriModalComponent implements OnInit {
 
   // @Input() name;//this is not necessary by the way
   fileBuktiPemuatan:File;
+  idPengarang=-1
+  // namaPengarangTemp=""
+  pengarangs = []
   dataEntri:IEntri={
     judul: null,
     namaPengarang:null,
     media:null,
     tanggalMuat:null,
     jenisKarya:null,
-    buktiPemuatan:null
+    buktiPemuatan:null,
+    idPengarang:null
   };
   addEntriForm = this.formBuilder.group({
     judul: null,
@@ -28,7 +32,7 @@ export class AddEntriModalComponent implements OnInit {
     media:null,
     tanggalMuat:null,
     jenisKarya:'cerpen',
-    buktiPemuatan:null    
+    buktiPemuatan:null,   
   });
 
   constructor(private formBuilder: FormBuilder,public activeModal:NgbActiveModal, private laporanPemuatanService:LaporanPemuatanService) {}
@@ -44,6 +48,8 @@ export class AddEntriModalComponent implements OnInit {
     this.dataEntri.tanggalMuat = this.addEntriForm.value.tanggalMuat;
     this.dataEntri.jenisKarya = this.addEntriForm.value.jenisKarya;
     this.dataEntri.buktiPemuatan = this.fileBuktiPemuatan;
+    this.dataEntri.idPengarang = this.idPengarang;
+    console.log("data entri id pengarang: "+this.dataEntri.idPengarang)
     this.laporanPemuatanService.addEntri(this.dataEntri,this);
   }
 
@@ -54,6 +60,33 @@ export class AddEntriModalComponent implements OnInit {
 
   close(){
     this.activeModal.close('success');
+  }
+
+  getPengarangs(){
+    console.log("get pengarang")
+    this.laporanPemuatanService.getPengarangs(this.addEntriForm.value.namaPengarang).subscribe(data=>{
+      this.pengarangs = data.pengarangs
+    },
+    error=>{
+      console.log(error)
+    })
+  }
+
+  namaPengarangChosen(){
+    console.log("nama pengarang chosen")
+    
+    //get the namaPengarang value from form
+    var namaPengarangChosen = this.addEntriForm.value.namaPengarang
+
+    //search through the pengarangs data to see what pengarang match
+    this.pengarangs.forEach((pengarang)=>{
+      if(namaPengarangChosen == pengarang.nama_lengkap){
+        this.idPengarang = pengarang.id
+      }
+    })
+
+    console.log("id pengarang: "+this.idPengarang)
+    
   }
 
 }

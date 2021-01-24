@@ -4,5 +4,6 @@ export interface IEntri{
     media:string,
     tanggalMuat:Date,
     jenisKarya:string,
-    buktiPemuatan:File    
+    buktiPemuatan:File,
+    idPengarang:number    
 }

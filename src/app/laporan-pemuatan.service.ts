@@ -18,6 +18,7 @@ export class LaporanPemuatanService {
     formData.append('tanggalMuat', entri.tanggalMuat);
     formData.append('jenisKarya', entri.jenisKarya);
     formData.append('fileBuktiPemuatan', entri.buktiPemuatan);
+    formData.append('idPengarang', entri.idPengarang);
     this.http.post<any>("api/laporan_pemuatan/add",formData,{ withCredentials: true }).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
@@ -42,4 +43,13 @@ export class LaporanPemuatanService {
       })
     )
   }      
+
+  getPengarangs(nama):Observable<any>{
+    return this.http.get<any>("api/laporan_pemuatan/add/get_list_pengarang?nama-pengarang="+nama).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
 }
