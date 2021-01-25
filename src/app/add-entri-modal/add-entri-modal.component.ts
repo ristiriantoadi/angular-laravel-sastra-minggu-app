@@ -63,7 +63,6 @@ export class AddEntriModalComponent implements OnInit {
   }
 
   getPengarangs(){
-    console.log("get pengarang")
     this.laporanPemuatanService.getPengarangs(this.addEntriForm.value.namaPengarang).subscribe(data=>{
       this.pengarangs = data.pengarangs
     },
@@ -73,7 +72,6 @@ export class AddEntriModalComponent implements OnInit {
   }
 
   namaPengarangChosen(){
-    console.log("nama pengarang chosen")
     
     //get the namaPengarang value from form
     var namaPengarangChosen = this.addEntriForm.value.namaPengarang
@@ -84,8 +82,6 @@ export class AddEntriModalComponent implements OnInit {
         this.idPengarang = pengarang.id
       }
     })
-
-    console.log("id pengarang: "+this.idPengarang)
     
   }
 

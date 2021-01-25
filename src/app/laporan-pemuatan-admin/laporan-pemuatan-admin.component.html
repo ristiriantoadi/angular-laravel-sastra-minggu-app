@@ -23,7 +23,8 @@
                     <td>{{entri.media}}</td>
                     <td>{{entri.tanggal_muat}}</td>
                     <td>
-                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id]">Link</a>
+                        <!-- <a [routerLink]="['/storage/bukti_pemuatan',entri.bukti_pemuatan]">Link</a> -->
+                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id,entri.bukti_pemuatan]">Link</a>
                     </td>
                 </tr>
             </tbody>
