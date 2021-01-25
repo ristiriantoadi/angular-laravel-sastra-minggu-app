@@ -12,16 +12,17 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="nama-pengarang">Nama Pengarang</label>
-                <input (input)="getPengarangs()" (change)="namaPengarangChosen()" list="pengarangs" type="text" class="form-control" formControlName="namaPengarang"  id="nama-pengarang" placeholder="Nama Pengarang">
+                <input (input)="getPengarangs()" (change)="namaPengarangChosen()" list="pengarangs" type="text" class="form-control" 
+                formControlName="namaPengarang"  id="nama-pengarang" placeholder="Nama Pengarang">
                 <datalist id="pengarangs">
                   <option *ngFor="let pengarang of pengarangs" value="{{pengarang.nama_lengkap}}">
-                
                 </datalist>
-                <!-- <small *ngIf="errorUsernameKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+                <small *ngIf="errorNamaPengarangKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="judul">Judul</label>
                 <input type="text" class="form-control" formControlName="judul"  id="judul" placeholder="Judul">
+                <small *ngIf="errorJudulKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="jenis-karya">Jenis Karya</label>
@@ -36,15 +37,20 @@
               <div class="form-group">
                 <label for="media">Media</label>
                 <input type="text" class="form-control" formControlName="media"  id="media" placeholder="Media">
+                <small *ngIf="errorMediaKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="tanggal-muat">Tanggal Muat</label>
                 <input type="date" class="form-control" formControlName="tanggalMuat"  id="tanggal-muat">
+                <small *ngIf="errorTanggalMuatKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="bukti-pemuatan">Bukti Pemuatan</label>
                 <input type="file" class="form-control-file" (change)="handleFileInput($event.target.files)" id="bukti-pemuatan">
-                <!-- <input type="file" class="form-control-file" id="bukti-pemuatan"> -->
+                <small *ngIf="errorBuktiPemuatanKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
+                <small *ngIf="errorFileBukanGambar" id="emailHelp" 
+                  class="form-text text-danger">File harus berupa gambar (png, jpg, jpeg
+                </small>
               </div>
             </div>
           </div>

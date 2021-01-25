@@ -12,9 +12,17 @@ import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 })
 export class AddEntriModalComponent implements OnInit {
 
-  // @Input() name;//this is not necessary by the way
   fileBuktiPemuatan:File;
   idPengarang=0
+
+  //error
+  errorFileBukanGambar=false;
+  errorJudulKosong=false;
+  errorNamaPengarangKosong=false;
+  errorMediaKosong = false;
+  errorTanggalMuatKosong = false;
+  errorBuktiPemuatanKosong = false;
+
   // namaPengarangTemp=""
   pengarangs = []
   dataEntri:IEntri={
@@ -42,6 +50,50 @@ export class AddEntriModalComponent implements OnInit {
   }
 
   onSubmit(){
+
+    //reset error message
+    this.errorBuktiPemuatanKosong=false;
+    this.errorFileBukanGambar=false;
+    this.errorJudulKosong=false;
+    this.errorMediaKosong=false;
+    this.errorNamaPengarangKosong=false;
+    this.errorTanggalMuatKosong=false;
+
+    //form tidak lengkap
+    if(this.addEntriForm.value.judul == '' || this.addEntriForm.value.namaPengarang == '' 
+    || this.addEntriForm.value.media == '' || this.addEntriForm.value.tanggalMuat == ''
+    || this.fileBuktiPemuatan == null || this.addEntriForm.value.judul == null || this.addEntriForm.value.namaPengarang == null 
+    || this.addEntriForm.value.media == null || this.addEntriForm.value.tanggalMuat == null){
+      if(this.addEntriForm.value.judul == '' || this.addEntriForm.value.judul == null){
+        this.errorJudulKosong = true;
+      }
+
+      if(this.addEntriForm.value.namaPengarang == '' || this.addEntriForm.value.namaPengarang == null){
+        this.errorNamaPengarangKosong = true;
+      }
+      
+      if(this.addEntriForm.value.media == '' || this.addEntriForm.value.media == null){
+        this.errorMediaKosong = true;
+      }
+
+      if(this.addEntriForm.value.tanggalMuat == '' || this.addEntriForm.value.tanggalMuat == null){
+        this.errorTanggalMuatKosong = true;
+      }
+
+      if(this.fileBuktiPemuatan == null){
+        this.errorBuktiPemuatanKosong = true;
+      }
+
+      return;
+    }
+
+    //file bukan gambar
+    if(!this.isFileGambar()){
+      this.errorFileBukanGambar=true;
+      return;
+    }
+    
+
     this.dataEntri.judul = this.addEntriForm.value.judul;
     this.dataEntri.namaPengarang = this.addEntriForm.value.namaPengarang;
     this.dataEntri.media = this.addEntriForm.value.media;
@@ -49,12 +101,19 @@ export class AddEntriModalComponent implements OnInit {
     this.dataEntri.jenisKarya = this.addEntriForm.value.jenisKarya;
     this.dataEntri.buktiPemuatan = this.fileBuktiPemuatan;
     this.dataEntri.idPengarang = this.idPengarang;
-    console.log("data entri id pengarang: "+this.dataEntri.idPengarang)
+
     this.laporanPemuatanService.addEntri(this.dataEntri,this);
   }
 
+  isFileGambar(){
+    var format=this.fileBuktiPemuatan.name.split(".")[1]
+    if(format == "jpg" || format == "png" || format == "jpeg"){
+      return true;
+    }
+    return false;
+  }
+
   handleFileInput(files: FileList) {
-    console.log(files.item(0));
     this.fileBuktiPemuatan=files.item(0);
   }
 
