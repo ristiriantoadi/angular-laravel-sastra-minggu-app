@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GuestComponent } from './guest/guest.component';
@@ -12,7 +11,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpXsrfInterceptor } from './HttpXsrfInterceptor';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { LaporanPemuatanAdminComponent } from './laporan-pemuatan-admin/laporan-pemuatan-admin.component';
 import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pemuatan-user.component';

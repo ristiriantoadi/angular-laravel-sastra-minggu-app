@@ -16,10 +16,7 @@ export class GuestComponent implements OnInit {
   ngOnInit(): void {
     this.laporanPemuatanService.getLaporanPemuatan()
     .subscribe(data=>{
-      // this.employees = data
-      // console.log(this.employees)
       this.entris = data.entris;
-      console.log(this.entris)
     },
     error=>{
       console.log(error)

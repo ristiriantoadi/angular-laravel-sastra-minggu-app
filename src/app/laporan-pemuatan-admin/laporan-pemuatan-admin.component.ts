@@ -33,9 +33,11 @@ export class LaporanPemuatanAdminComponent implements OnInit {
   
 
   openAddEntriModal(){
+    //open modal
     const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true});
+    
+    //callback when adding entri is done
     modalRef.result.then((result) => {
-      console.log("modal closed")
       this.updateDataLaporanPemuatan();
     }, (reason) => {
       console.log('Dismissed action: ' + reason);
@@ -52,12 +54,12 @@ export class LaporanPemuatanAdminComponent implements OnInit {
         console.log(error)
       })
     }
-
   }
 
   editEntri(id:any){
     this.laporanPemuatanService.getEntriEdit(id)
     .subscribe(data=>{
+      //open modal edit entri
       const modalRef = this.modalService.open(EditEntriModalComponent);
       modalRef.componentInstance.entri = data.entri;
     },

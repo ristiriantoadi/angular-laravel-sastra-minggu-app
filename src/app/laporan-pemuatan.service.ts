@@ -11,6 +11,7 @@ export class LaporanPemuatanService {
   constructor(private http:HttpClient) { }
 
   addEntri(entri,modal){
+    //create form data object
     const formData: FormData = new FormData();
     formData.append('judul', entri.judul);
     formData.append('namaPengarang', entri.namaPengarang);
@@ -19,6 +20,8 @@ export class LaporanPemuatanService {
     formData.append('jenisKarya', entri.jenisKarya);
     formData.append('fileBuktiPemuatan', entri.buktiPemuatan);
     formData.append('idPengarang', entri.idPengarang);
+
+    //send request to add new entri 
     this.http.post<any>("api/laporan_pemuatan/add",formData,{ withCredentials: true }).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
@@ -32,7 +35,8 @@ export class LaporanPemuatanService {
       console.log(error)
     })
   }
-
+  
+  //get all entri of laporan pemuatan
   getLaporanPemuatan():Observable<any>{
     return this.http.get<any>("api/laporan_pemuatan").pipe(
       catchError((error:HttpErrorResponse)=>{
@@ -41,6 +45,7 @@ export class LaporanPemuatanService {
     )
   }      
 
+  //get list of pengarang when adding new entri
   getPengarangs(nama):Observable<any>{
     return this.http.get<any>("api/laporan_pemuatan/add/get_list_pengarang?nama-pengarang="+nama).pipe(
       catchError((error:HttpErrorResponse)=>{
@@ -57,6 +62,7 @@ export class LaporanPemuatanService {
     )
   }
 
+  //get entri to be edited
   getEntriEdit(id):Observable<any>{
     return this.http.get<any>("api/laporan_pemuatan/edit?id="+id).pipe(
       catchError((error:HttpErrorResponse)=>{

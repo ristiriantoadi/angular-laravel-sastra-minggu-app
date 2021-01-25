@@ -17,9 +17,9 @@ export class AuthService {
 
   public setUserData(user){
     localStorage.setItem("username",user.username)
-        localStorage.setItem("namaLengkap",user.namaLengkap)
-        localStorage.setItem("role",user.role)
-        localStorage.setItem("id",user.id.toString())
+    localStorage.setItem("namaLengkap",user.namaLengkap)
+    localStorage.setItem("role",user.role)
+    localStorage.setItem("id",user.id.toString())
   }
 
   public authenticate(username,password,loginModal){
@@ -33,9 +33,8 @@ export class AuthService {
           return throwError(error || "server error")
         })
       ).subscribe(user=>{
-
-        this.setUserData(user)
         
+        this.setUserData(user)
         if(user.role === "admin"){
           this.router.navigate(['admin','laporan_pemuatan']);
         }else{
@@ -44,6 +43,7 @@ export class AuthService {
 
         loginModal.closeModal();
         loginModal.loginForm.reset();
+
       },
         error=>{
           console.log(error)
@@ -68,7 +68,6 @@ export class AuthService {
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
-        console.log(data)
         localStorage.removeItem("role")
         localStorage.removeItem("username")
         localStorage.removeItem("namaLengkap")
@@ -81,11 +80,8 @@ export class AuthService {
   }
 
   public register(username,password,namaLengkap,registerModal){
-    console.log("register")
-    console.log("Username: "+username)
-    console.log("Password: "+password)
-    console.log("Nama Lengkap: "+namaLengkap)
-
+    
+    //send request to /sanctum/csrf-cookie and then the register/user endpoint
     this.http.get('/sanctum/csrf-cookie').pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
@@ -96,7 +92,6 @@ export class AuthService {
           return throwError(error || "server error")
         })
       ).subscribe(data=>{
-        console.log(data.message)
         if(data.message == "username tidak tersedia"){
           registerModal.showErrorUsernameTidakTersedia()
         }else if(data.message == "success"){
@@ -113,8 +108,7 @@ export class AuthService {
     error=>{
       console.log(error)
     })
-  }
-  
+  }  
 
   public isAuthenticated(role){
     if(localStorage.getItem("role") == role)

@@ -35,6 +35,7 @@ export class ModalLoginComponent implements OnInit {
   }
 
   onSubmit(){
+    
     //reset error
     this.error=false;
     this.errorPasswordKosong=false;

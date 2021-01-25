@@ -8,7 +8,6 @@
         
         <div *ngIf="loggedIn;then thenBlock;else elseBlock">
         </div>
-        
         <ng-template #thenBlock>
             <div class="navbar-nav ml-auto">
                 <span class="btn noHover">{{username}}</span>
@@ -21,10 +20,5 @@
                 <button type="button" (click)="openRegisterModal()" class="btn btn-link">Register</button>
             </div>
         </ng-template>
-
-        <!-- <div class="navbar-nav ml-auto">
-            <button type="button" (click)="openLoginModal()" class="btn btn-link">Login</button>
-            <button type="button" class="btn btn-link">Register</button>
-        </div> -->
     </div>
 </nav>

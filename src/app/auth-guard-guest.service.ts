@@ -19,6 +19,7 @@ export class AuthGuardGuestService implements CanActivate{
       this.router.navigate(['user','laporan_pemuatan']);
       return false;
     }
+    
     return true;
   }
 }

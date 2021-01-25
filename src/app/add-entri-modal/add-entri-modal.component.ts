@@ -13,9 +13,9 @@ import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 export class AddEntriModalComponent implements OnInit {
 
   fileBuktiPemuatan:File;
+  
   idPengarang=0
 
-  //error
   errorFileBukanGambar=false;
   errorJudulKosong=false;
   errorNamaPengarangKosong=false;
@@ -23,8 +23,8 @@ export class AddEntriModalComponent implements OnInit {
   errorTanggalMuatKosong = false;
   errorBuktiPemuatanKosong = false;
 
-  // namaPengarangTemp=""
   pengarangs = []
+  
   dataEntri:IEntri={
     judul: null,
     namaPengarang:null,
@@ -34,6 +34,7 @@ export class AddEntriModalComponent implements OnInit {
     buktiPemuatan:null,
     idPengarang:null
   };
+  
   addEntriForm = this.formBuilder.group({
     judul: null,
     namaPengarang:null,
@@ -59,7 +60,7 @@ export class AddEntriModalComponent implements OnInit {
     this.errorNamaPengarangKosong=false;
     this.errorTanggalMuatKosong=false;
 
-    //form tidak lengkap
+    //cek apakah form tidak lengkap
     if(this.addEntriForm.value.judul == '' || this.addEntriForm.value.namaPengarang == '' 
     || this.addEntriForm.value.media == '' || this.addEntriForm.value.tanggalMuat == ''
     || this.fileBuktiPemuatan == null || this.addEntriForm.value.judul == null || this.addEntriForm.value.namaPengarang == null 
@@ -87,13 +88,12 @@ export class AddEntriModalComponent implements OnInit {
       return;
     }
 
-    //file bukan gambar
+    //cek apakah file adalah gambar
     if(!this.isFileGambar()){
       this.errorFileBukanGambar=true;
       return;
     }
     
-
     this.dataEntri.judul = this.addEntriForm.value.judul;
     this.dataEntri.namaPengarang = this.addEntriForm.value.namaPengarang;
     this.dataEntri.media = this.addEntriForm.value.media;
