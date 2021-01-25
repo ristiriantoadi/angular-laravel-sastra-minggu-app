@@ -40,7 +40,7 @@ export class ModalLoginComponent implements OnInit {
     this.errorPasswordKosong=false;
     this.errorUsernameKosong = false;
 
-    //form tidak lengkap
+    //cek apakah form lengkap
     if(this.loginForm.value.username == null || this.loginForm.value.password == null 
       ||this.loginForm.value.username == '' || this.loginForm.value.password == ''){
       console.log("Form tidak lengkap")

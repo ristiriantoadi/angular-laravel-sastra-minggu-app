@@ -51,9 +51,7 @@ import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.com
       headerName: 'X-XSRF-TOKEN'
     })
   ],
-  providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

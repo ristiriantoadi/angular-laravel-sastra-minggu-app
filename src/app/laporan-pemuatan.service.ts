@@ -24,11 +24,8 @@ export class LaporanPemuatanService {
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
-      console.log(data.message)
       if(data.message == "success"){
         modal.close();
-        console.log("modal close")
-        // this.getLaporanPemuatan();
       }
     },
     error=>{

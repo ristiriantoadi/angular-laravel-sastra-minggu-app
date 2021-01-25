@@ -117,21 +117,8 @@ export class AuthService {
   
 
   public isAuthenticated(role){
-    // if(localStorage.getItem("loggedIn") == "true"){
     if(localStorage.getItem("role") == role)
       return true
     return false
   }
-
-  // public isAuthenticatedUser(){
-  //   if(localStorage.getItem("role") == "user")
-  //     return true
-    
-  //   return false
-  // }
-
-  // public logout(){
-  //   localStorage.removeItem("role")
-  //   this.router.navigate(['/login'])
-  // }
 }
