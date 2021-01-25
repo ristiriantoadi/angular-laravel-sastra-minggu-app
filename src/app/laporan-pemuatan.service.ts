@@ -52,4 +52,12 @@ export class LaporanPemuatanService {
     )
   }
 
+  hapusEntri(id:any):Observable<any>{
+    return this.http.post("api/laporan_pemuatan/delete",{id},{withCredentials:true}).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
 }

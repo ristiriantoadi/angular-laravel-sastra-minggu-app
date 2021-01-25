@@ -13,6 +13,7 @@
                     <th scope="col">Media</th>
                     <th scope="col">Tanggal Terbit</th>
                     <th scope="col">Bukti Pemuatan</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,10 @@
                     <td>{{entri.tanggal_muat}}</td>
                     <td>
                         <a [routerLink]="['/storage/bukti_pemuatan',entri.id,entri.bukti_pemuatan]">Link</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning mr-2">Edit</button>
+                        <button type="button" (click)="hapusEntri(entri.id)" class="btn btn-danger">Hapus</button>
                     </td>
                 </tr>
             </tbody>

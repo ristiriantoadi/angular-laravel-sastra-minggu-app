@@ -42,5 +42,18 @@ export class LaporanPemuatanAdminComponent implements OnInit {
   }
 
   
+  hapusEntri(id:any){
+    if(confirm("Anda yakin ingin menghapus entri?")){
+      this.laporanPemuatanService.hapusEntri(id).subscribe(data=>{
+        this.updateDataLaporanPemuatan()
+      },
+      error=>{
+        console.log(error)
+      })
+    }
+
+  }
+
+  
 
 }
