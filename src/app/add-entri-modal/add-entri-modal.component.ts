@@ -14,7 +14,7 @@ export class AddEntriModalComponent implements OnInit {
 
   // @Input() name;//this is not necessary by the way
   fileBuktiPemuatan:File;
-  idPengarang=-1
+  idPengarang=0
   // namaPengarangTemp=""
   pengarangs = []
   dataEntri:IEntri={
