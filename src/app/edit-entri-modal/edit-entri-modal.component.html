@@ -1,11 +1,11 @@
-  <div class="modal-header">
-    <h4 class="modal-title">Tambah Entri Pemuatan</h4>
+<div class="modal-header">
+    <h4 class="modal-title">Edit Entri Pemuatan</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body overflow-auto add-entri-modal">
-      <form [formGroup]="addEntriForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="editEntriForm" (ngSubmit)="onSubmit()">
         <div class="container">
           <div class="row">
             <div class="col-md-6">
@@ -16,19 +16,19 @@
                 <datalist id="pengarangs">
                   <option *ngFor="let pengarang of pengarangs" value="{{pengarang.nama_lengkap}}">
                 </datalist>
-                <small *ngIf="errorNamaPengarangKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
+                <!-- <small *ngIf="errorNamaPengarangKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
               </div>
               <div class="form-group">
                 <label for="judul">Judul</label>
                 <input type="text" class="form-control" formControlName="judul"  id="judul" placeholder="Judul">
-                <small *ngIf="errorJudulKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
+                <!-- <small *ngIf="errorJudulKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
               </div>
               <div class="form-group">
                 <label for="jenis-karya">Jenis Karya</label>
                 <select id="jenis-karya" class="form-control" formControlName="jenisKarya">
-                  <option selected value="cerpen">Cerpen</option>
-                  <option value="puisi">Puisi</option>
-                  <option value="esai">Esai</option>
+                  <option [selected]="entri.jenis_karya == 'cerpen'" value="cerpen">Cerpen</option>
+                  <option [selected]="entri.jenis_karya == 'puisi'" value="puisi">Puisi</option>
+                  <option [selected]="entri.jenis_karya == 'esai'" value="esai">Esai</option>
                 </select>
               </div>
             </div>
@@ -36,23 +36,20 @@
               <div class="form-group">
                 <label for="media">Media</label>
                 <input type="text" class="form-control" formControlName="media"  id="media" placeholder="Media">
-                <small *ngIf="errorMediaKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
+                <!-- <small *ngIf="errorMediaKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
               </div>
               <div class="form-group">
                 <label for="tanggal-muat">Tanggal Muat</label>
                 <input type="date" class="form-control" formControlName="tanggalMuat"  id="tanggal-muat">
-                <small *ngIf="errorTanggalMuatKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
+                <!-- <small *ngIf="errorTanggalMuatKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
               </div>
               <div class="form-group">
                 <label for="bukti-pemuatan">Bukti Pemuatan</label>
                 <input type="file" class="form-control-file" (change)="handleFileInput($event.target.files)" id="bukti-pemuatan">
-<<<<<<< HEAD
-=======
-                <small *ngIf="errorBuktiPemuatanKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
-                <small *ngIf="errorFileBukanGambar" id="emailHelp" 
+                <!-- <small *ngIf="errorBuktiPemuatanKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+                <!-- <small *ngIf="errorFileBukanGambar" id="emailHelp" 
                   class="form-text text-danger">File harus berupa gambar (png, jpg, jpeg
-                </small>
->>>>>>> 0a33a14857e4166c452991a75bcf514851c49bf3
+                </small> -->
               </div>
             </div>
           </div>

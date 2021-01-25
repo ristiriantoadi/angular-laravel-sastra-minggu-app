@@ -13,9 +13,11 @@
                     <th scope="col">Media</th>
                     <th scope="col">Tanggal Terbit</th>
                     <th scope="col">Bukti Pemuatan</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD
                 <tr>
                     <td>Ristirianto Adi</td>
                     <td>Tidak Ada Pesan Moral</td>
@@ -26,14 +28,20 @@
                         <a href="#">Link</a>
                     </td>
                 </tr>
+=======
+>>>>>>> 0a33a14857e4166c452991a75bcf514851c49bf3
                 <tr *ngFor="let entri of entris">
-                    <td>{{entri.nama_pengarang}}</td>
+                    <td>{{entri.nama_lengkap}}</td>
                     <td>{{entri.judul_karya}}</td>
                     <td>{{entri.jenis_karya}}</td>
                     <td>{{entri.media}}</td>
                     <td>{{entri.tanggal_muat}}</td>
                     <td>
-                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id]">Link</a>
+                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id,entri.bukti_pemuatan]">Link</a>
+                    </td>
+                    <td>
+                        <button type="button" (click)="editEntri(entri.id)" class="btn btn-warning mr-2">Edit</button>
+                        <button type="button" (click)="hapusEntri(entri.id)" class="btn btn-danger">Hapus</button>
                     </td>
                 </tr>
             </tbody>

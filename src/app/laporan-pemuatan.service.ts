@@ -18,13 +18,16 @@ export class LaporanPemuatanService {
     formData.append('tanggalMuat', entri.tanggalMuat);
     formData.append('jenisKarya', entri.jenisKarya);
     formData.append('fileBuktiPemuatan', entri.buktiPemuatan);
+    formData.append('idPengarang', entri.idPengarang);
     this.http.post<any>("api/laporan_pemuatan/add",formData,{ withCredentials: true }).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })
     ).subscribe(data=>{
+      console.log(data.message)
       if(data.message == "success"){
         modal.close();
+        console.log("modal close")
         // this.getLaporanPemuatan();
       }
     },
@@ -40,4 +43,29 @@ export class LaporanPemuatanService {
       })
     )
   }      
+
+  getPengarangs(nama):Observable<any>{
+    return this.http.get<any>("api/laporan_pemuatan/add/get_list_pengarang?nama-pengarang="+nama).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
+  hapusEntri(id:any):Observable<any>{
+    return this.http.post("api/laporan_pemuatan/delete",{id},{withCredentials:true}).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
+  getEntriEdit(id):Observable<any>{
+    return this.http.get<any>("api/laporan_pemuatan/edit?id="+id).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
 }

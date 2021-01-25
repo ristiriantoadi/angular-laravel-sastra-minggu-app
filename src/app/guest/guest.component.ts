@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IEntri } from '../IEntri';
+import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 
 @Component({
   selector: 'app-guest',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestComponent implements OnInit {
 
-  constructor() { }
+  entris=[]
+
+  constructor(private laporanPemuatanService:LaporanPemuatanService) { }
 
   ngOnInit(): void {
+    this.laporanPemuatanService.getLaporanPemuatan()
+    .subscribe(data=>{
+      // this.employees = data
+      // console.log(this.employees)
+      this.entris = data.entris;
+      console.log(this.entris)
+    },
+    error=>{
+      console.log(error)
+    })
   }
 
 }
