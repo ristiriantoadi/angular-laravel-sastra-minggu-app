@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddEntriModalComponent } from '../add-entri-modal/add-entri-modal.component';
+import { EditEntriModalComponent } from '../edit-entri-modal/edit-entri-modal.component';
 import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 
 @Component({
@@ -52,6 +53,17 @@ export class LaporanPemuatanAdminComponent implements OnInit {
       })
     }
 
+  }
+
+  editEntri(id:any){
+    this.laporanPemuatanService.getEntriEdit(id)
+    .subscribe(data=>{
+      const modalRef = this.modalService.open(EditEntriModalComponent);
+      modalRef.componentInstance.entri = data.entri;
+    },
+    error=>{
+      console.log(error)
+    })
   }
 
   

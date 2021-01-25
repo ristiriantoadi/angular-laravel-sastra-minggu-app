@@ -60,4 +60,12 @@ export class LaporanPemuatanService {
     )
   }
 
+  getEntriEdit(id):Observable<any>{
+    return this.http.get<any>("api/laporan_pemuatan/edit?id="+id).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
 }

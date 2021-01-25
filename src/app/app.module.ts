@@ -19,6 +19,7 @@ import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pe
 import { ReportComponent } from './report/report.component';
 import { NotifikasiComponent } from './notifikasi/notifikasi.component';
 import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.component';
+import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.compon
     LaporanPemuatanUserComponent,
     ReportComponent,
     NotifikasiComponent,
-    AddEntriModalComponent
+    AddEntriModalComponent,
+    EditEntriModalComponent
   ],
   imports: [
     BrowserModule,
