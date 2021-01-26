@@ -10,13 +10,16 @@ import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 export class GuestComponent implements OnInit {
 
   entris=[]
+  totalRecords
+  currentPage=1
 
   constructor(private laporanPemuatanService:LaporanPemuatanService) { }
 
   ngOnInit(): void {
     this.laporanPemuatanService.getLaporanPemuatan()
     .subscribe(data=>{
-      this.entris = data.entris;
+      this.entris = data.entris
+      this.totalRecords = this.entris.length;
     },
     error=>{
       console.log(error)

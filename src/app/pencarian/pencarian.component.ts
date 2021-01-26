@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-pencarian',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PencarianComponent implements OnInit {
 
-  constructor() { }
+  pencarianForm = this.formBuilder.group({
+    namaJudulMedia: null,
+    tanggalMuatAwal: null,
+    tanggalMuatAkhir:null
+  });
+
+
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
   }
