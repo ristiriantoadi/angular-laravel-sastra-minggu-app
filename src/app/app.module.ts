@@ -18,7 +18,8 @@ import { ReportComponent } from './report/report.component';
 import { NotifikasiComponent } from './notifikasi/notifikasi.component';
 import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.component';
 import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.component';
-import {NgxPaginationModule} from "ngx-pagination"
+import {NgxPaginationModule} from "ngx-pagination";
+import { PencarianComponent } from './pencarian/pencarian.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {NgxPaginationModule} from "ngx-pagination"
     ReportComponent,
     NotifikasiComponent,
     AddEntriModalComponent,
-    EditEntriModalComponent
+    EditEntriModalComponent,
+    PencarianComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+<form>
+    <div class="form-group">
+        <label for="nama-judul-media">Nama Pengarang / Judul / Media</label>
+        <input type="text" class="form-control col-md-10" formControlName="namaJudulMedia"  
+            id="nama-judul-media" placeholder="Cari berdasarkan nama pengarang, judul, atau media">
+    </div>
+    <div class="form-group">
+        <label for="tanggal-muat">Tanggal Pemuatan</label>
+        <div class="row">
+            <div class="col-md-5">
+                <input type="date" class="form-control" formControlName="tanggalMuat" 
+            id="tanggal-muat">
+            </div>
+            <span class="align-self-center">-</span>    
+            <div class="col-md-5">
+                <input type="date" class="form-control" formControlName="tanggalMuat" 
+            id="tanggal-muat">
+            </div>    
+        </div>
+    </div>
+    <button type="submit" class="mb-3 btn btn-info">Cari</button>
+</form>
