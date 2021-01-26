@@ -2,41 +2,49 @@
     <h5 class="card-header">Laporan Pemuatan</h5>
     <div class="card-body">
         <div class="mb-2"> 
-            <div class="container">
-                <div class="row d-flex align-items-end">
-                  <!-- <div class="align-self-center col-md-2"> -->
-                    <div class="col-md-2">
-                        <!-- <button (click)="openAddEntriModal()" type="button" class="mt-3 btn btn-primary">Tambah Entri</button> -->
-                        <button  (click)="openAddEntriModal()" type="button" class="mb-3 btn btn-primary">Tambah Entri</button>
-                    </div>
-                  <!-- <div class="align-self-center col-md-10"> -->
-                    <!-- <div class="col-md-10"> -->
-                    <form class="col-md-10 d-flex row">
-                        <!-- <div class="align-self-center col-md-5"> -->
-                        <!-- <div class="col-md-5 d-flex align-items-end"> -->
-                            <div class="col-md-5 d-flex align-items-end">
-                                <div class="form-group">
-                                    <label for="nama-judul-media">Nama Pengarang / Judul / Media</label>
-                                    <input type="text" class="form-control" formControlName="namaJudulMedia"  
-                                        id="nama-judul-media" placeholder="Cari berdasarkan nama pengarang, judul, atau media">
-                                        <!-- <small *ngIf="errorUsernameKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
-                                </div>
-                            </div>
-                                <!-- <div class="align-self-center col-md-5"> -->
-                            <div class="col-md-5 d-flex align-items-end">
-                                <div class="form-group">
-                                    <label for="tanggal-muat">Tanggal Pemuatan</label>
-                                    <input type="date" class="form-control" formControlName="tanggalMuat" 
-                                        id="tanggal-muat">
-                                    <!-- <small *ngIf="errorPasswordKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
-                                </div>
-                            </div>
-                            <!-- <div class="align-self-center col-md-2"> -->
-                            <div class="col-md-2 d-flex align-items-end">
-                                <button type="submit" class="mb-3 btn btn-info">Pencarian</button>
-                            </div>
-                    </form>
+            <div class="row d-flex align-items-end">
+                <div class="col-md-2">
+                    <button  (click)="openAddEntriModal()" type="button" class="mb-3 btn btn-primary">Tambah Entri</button>
                 </div>
+                <form class="col-md-10">
+                    <!-- <div class="d-flex align-items-end">
+                        <div class="form-group">
+                            <label for="nama-judul-media">Nama Pengarang / Judul / Media</label>
+                            <input type="text" class="form-control" formControlName="namaJudulMedia"  
+                                id="nama-judul-media" placeholder="Cari berdasarkan nama pengarang, judul, atau media">
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="nama-judul-media">Nama Pengarang / Judul / Media</label>
+                        <input type="text" class="form-control" formControlName="namaJudulMedia"  
+                            id="nama-judul-media" placeholder="Cari berdasarkan nama pengarang, judul, atau media">
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal-muat">Tanggal Pemuatan</label>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="date" class="form-control" formControlName="tanggalMuat" 
+                            id="tanggal-muat">
+                            </div>
+                            <span class="align-self-center">-</span>    
+                            <div class="col-md-5">
+                                <input type="date" class="form-control" formControlName="tanggalMuat" 
+                            id="tanggal-muat">
+                            </div>    
+                        </div>
+                    </div>
+                    <button type="submit" class="mb-3 btn btn-info">Cari</button>
+                    <!-- <div class="d-flex align-items-end">
+                        <div class="form-group">
+                            <label for="tanggal-muat">Tanggal Pemuatan</label>
+                            <input type="date" class="form-control" formControlName="tanggalMuat" 
+                                id="tanggal-muat">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end">
+                        <button type="submit" class="mb-3 btn btn-info">Pencarian</button>
+                    </div> -->
+                </form>
             </div>  
         </div>
         <table class="table table-striped">
