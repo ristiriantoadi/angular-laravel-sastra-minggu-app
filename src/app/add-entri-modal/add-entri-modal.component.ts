@@ -136,11 +136,16 @@ export class AddEntriModalComponent implements OnInit {
     var namaPengarangChosen = this.addEntriForm.value.namaPengarang
 
     //search through the pengarangs data to see what pengarang match
+    var pengarangMatch=false
     this.pengarangs.forEach((pengarang)=>{
       if(namaPengarangChosen == pengarang.nama_lengkap){
         this.idPengarang = pengarang.id
+        pengarangMatch=true
       }
     })
+    if(pengarangMatch==false){
+      this.idPengarang=0
+    }
     
   }
 

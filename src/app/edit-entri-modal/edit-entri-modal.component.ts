@@ -12,7 +12,16 @@ import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 export class EditEntriModalComponent implements OnInit {
 
   pengarangs=[]
-  idPengarang
+  idPengarang=0
+  fileBuktiPemuatan
+
+  namaPengarangChanged=false
+
+  errorFileBukanGambar=false;
+  errorJudulKosong=false;
+  errorNamaPengarangKosong=false;
+  errorMediaKosong = false;
+  errorTanggalMuatKosong = false;
 
   @Input() entri;
 
@@ -36,12 +45,11 @@ export class EditEntriModalComponent implements OnInit {
     this.editEntriForm.controls['tanggalMuat'].setValue(this.entri.tanggal_muat);
     this.editEntriForm.controls['jenisKarya'].setValue(this.entri.jenis_karya);
     
-    console.log(this.editEntriForm.value.judul)
   }
 
   handleFileInput(files: FileList) {
-    console.log(files.item(0));
-    // this.file=files.item(0);
+    // console.log(files.item(0));
+    this.fileBuktiPemuatan=files.item(0);
   }
 
   namaPengarangChosen(){
@@ -50,12 +58,17 @@ export class EditEntriModalComponent implements OnInit {
     var namaPengarangChosen = this.editEntriForm.value.namaPengarang
 
     //search through the pengarangs data to see what pengarang match
+    var pengarangMatch=false
     this.pengarangs.forEach((pengarang)=>{
       if(namaPengarangChosen == pengarang.nama_lengkap){
         this.idPengarang = pengarang.id
+        pengarangMatch=true
       }
     })
-    
+    if(pengarangMatch==false){
+      this.idPengarang=0
+    }
+    this.namaPengarangChanged=true
   }
 
   getPengarangs(){
@@ -69,6 +82,78 @@ export class EditEntriModalComponent implements OnInit {
 
   onSubmit(){
     console.log("submit")
+
+    //reset error message
+    this.errorFileBukanGambar=false;
+    this.errorJudulKosong=false;
+    this.errorMediaKosong=false;
+    this.errorNamaPengarangKosong=false;
+    this.errorTanggalMuatKosong=false;
+
+    //cek apakah form tidak lengkap
+    if(this.editEntriForm.value.judul == '' || this.editEntriForm.value.namaPengarang == '' 
+    || this.editEntriForm.value.media == '' || this.editEntriForm.value.tanggalMuat == ''
+    || this.editEntriForm.value.judul == null || this.editEntriForm.value.namaPengarang == null 
+    || this.editEntriForm.value.media == null || this.editEntriForm.value.tanggalMuat == null){
+      if(this.editEntriForm.value.judul == '' || this.editEntriForm.value.judul == null){
+        this.errorJudulKosong = true;
+      }
+
+      if(this.editEntriForm.value.namaPengarang == '' || this.editEntriForm.value.namaPengarang == null){
+        this.errorNamaPengarangKosong = true;
+      }
+      
+      if(this.editEntriForm.value.media == '' || this.editEntriForm.value.media == null){
+        this.errorMediaKosong = true;
+      }
+
+      if(this.editEntriForm.value.tanggalMuat == '' || this.editEntriForm.value.tanggalMuat == null){
+        this.errorTanggalMuatKosong = true;
+      }
+
+      return;
+    }
+
+    //cek apakah file adalah gambar
+    if(this.fileBuktiPemuatan){
+      if(!this.isFileGambar()){
+        this.errorFileBukanGambar=true;
+        return;
+      }
+    }
+
+    if(!this.namaPengarangChanged){ 
+      this.idPengarang = this.entri.user_id_pengarang
+    }
+
+    const entri = {
+      judul:this.editEntriForm.value.judul,
+      namaPengarang:this.editEntriForm.value.namaPengarang,
+      media:this.editEntriForm.value.media,
+      tanggalMuat:this.editEntriForm.value.tanggalMuat,
+      jenisKarya:this.editEntriForm.value.jenisKarya,
+      fileBuktiPemuatan:this.fileBuktiPemuatan,
+      id:this.entri.id,
+      idPengarang:this.idPengarang
+    }
+
+    console.log(entri);
+
+    this.laporanPemuatanService.editEntri(entri)
+    .subscribe(data=>{
+      this.activeModal.close("success")
+    },
+    error=>{
+      console.log(error)
+    })
+  }
+
+  isFileGambar(){
+    var format=this.fileBuktiPemuatan.name.split(".")[1]
+    if(format == "jpg" || format == "png" || format == "jpeg"){
+      return true;
+    }
+    return false;
   }
 
 }

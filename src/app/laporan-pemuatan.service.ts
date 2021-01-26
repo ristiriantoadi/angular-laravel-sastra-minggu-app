@@ -71,4 +71,21 @@ export class LaporanPemuatanService {
     )
   }
 
+  editEntri(newEntri:any):Observable<any>{
+    const formData: FormData = new FormData();
+    formData.append('judul', newEntri.judul);
+    formData.append('nama_pengarang', newEntri.namaPengarang);
+    formData.append('media', newEntri.media);
+    formData.append('tanggal_muat', newEntri.tanggalMuat);
+    formData.append('file_bukti_pemuatan', newEntri.fileBuktiPemuatan);
+    formData.append('jenis_karya', newEntri.jenisKarya);
+    formData.append('id_entri', newEntri.id);
+    formData.append('id_pengarang', newEntri.idPengarang);
+    return this.http.post<any>("api/laporan_pemuatan/edit",formData,{withCredentials:true}).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
 }

@@ -16,12 +16,12 @@
                 <datalist id="pengarangs">
                   <option *ngFor="let pengarang of pengarangs" value="{{pengarang.nama_lengkap}}">
                 </datalist>
-                <!-- <small *ngIf="errorNamaPengarangKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+                <small *ngIf="errorNamaPengarangKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="judul">Judul</label>
                 <input type="text" class="form-control" formControlName="judul"  id="judul" placeholder="Judul">
-                <!-- <small *ngIf="errorJudulKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+                <small *ngIf="errorJudulKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="jenis-karya">Jenis Karya</label>
@@ -36,26 +36,26 @@
               <div class="form-group">
                 <label for="media">Media</label>
                 <input type="text" class="form-control" formControlName="media"  id="media" placeholder="Media">
-                <!-- <small *ngIf="errorMediaKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+                <small *ngIf="errorMediaKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="tanggal-muat">Tanggal Muat</label>
                 <input type="date" class="form-control" formControlName="tanggalMuat"  id="tanggal-muat">
-                <!-- <small *ngIf="errorTanggalMuatKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
+                <small *ngIf="errorTanggalMuatKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small>
               </div>
               <div class="form-group">
                 <label for="bukti-pemuatan">Bukti Pemuatan</label>
+                <a [routerLink]="['/storage/bukti_pemuatan',entri.id,entri.bukti_pemuatan]"> (Link) </a>
                 <input type="file" class="form-control-file" (change)="handleFileInput($event.target.files)" id="bukti-pemuatan">
-                <!-- <small *ngIf="errorBuktiPemuatanKosong" id="emailHelp" class="form-text text-danger">Harap diisi</small> -->
-                <!-- <small *ngIf="errorFileBukanGambar" id="emailHelp" 
+                <small *ngIf="errorFileBukanGambar" id="emailHelp" 
                   class="form-text text-danger">File harus berupa gambar (png, jpg, jpeg
-                </small> -->
+                </small>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button type="submit" class="btn btn-primary">Tambah Entri</button>
+              <button type="submit" class="btn btn-primary">Edit Entri</button>
             </div>
           </div>
         </div>

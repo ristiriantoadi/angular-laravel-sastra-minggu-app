@@ -62,6 +62,11 @@ export class LaporanPemuatanAdminComponent implements OnInit {
       //open modal edit entri
       const modalRef = this.modalService.open(EditEntriModalComponent);
       modalRef.componentInstance.entri = data.entri;
+      modalRef.result.then((result) => {
+        this.updateDataLaporanPemuatan();
+      }, (reason) => {
+        console.log('Dismissed action: ' + reason);
+      });
     },
     error=>{
       console.log(error)
