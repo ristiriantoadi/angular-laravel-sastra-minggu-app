@@ -14,6 +14,8 @@ export class LaporanPemuatanAdminComponent implements OnInit {
   constructor(private modalService: NgbModal,private laporanPemuatanService:LaporanPemuatanService) {}
 
   entris=[]
+  totalRecords
+  currentPage=1
 
   ngOnInit(): void {
     this.updateDataLaporanPemuatan();
@@ -24,7 +26,7 @@ export class LaporanPemuatanAdminComponent implements OnInit {
     this.laporanPemuatanService.getLaporanPemuatan()
     .subscribe(data=>{
       this.entris = data.entris
-      console.log(this.entris)
+      this.totalRecords = this.entris.length;
     },
     error=>{
       console.log(error)

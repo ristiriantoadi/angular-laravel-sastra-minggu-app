@@ -17,7 +17,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let entri of entris">
+                <tr *ngFor="let entri of entris | paginate: {id:'listing_pagination',
+                    itemsPerPage:10,currentPage:currentPage,totalItems:totalRecords} ">
                     <td>{{entri.nama_lengkap}}</td>
                     <td>{{entri.judul_karya}}</td>
                     <td>{{entri.jenis_karya}}</td>
@@ -33,5 +34,9 @@
                 </tr>
             </tbody>
           </table>
+          <div>
+              <pagination-controls id="listing_pagination" maxSize="10" directionLinks="true" 
+              (pageChange)="currentPage=$event"></pagination-controls>
+          </div>
     </div>
 </div>

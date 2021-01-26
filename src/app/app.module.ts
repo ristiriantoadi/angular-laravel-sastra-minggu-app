@@ -18,7 +18,7 @@ import { ReportComponent } from './report/report.component';
 import { NotifikasiComponent } from './notifikasi/notifikasi.component';
 import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.component';
 import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.component';
-
+import {NgxPaginationModule} from "ngx-pagination"
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.com
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
