@@ -4,7 +4,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Nama Pengarang</th>
                     <th scope="col">Judul</th>
                     <th scope="col">Jenis</th>
                     <th scope="col">Media</th>
@@ -15,7 +14,6 @@
             <tbody>
                 <tr *ngFor="let entri of entris | paginate: {id:'listing_pagination',
                     itemsPerPage:10,currentPage:currentPage,totalItems:totalRecords} ">
-                    <td>{{entri.nama_lengkap}}</td>
                     <td>{{entri.judul_karya}}</td>
                     <td>{{entri.jenis_karya}}</td>
                     <td>{{entri.media}}</td>
