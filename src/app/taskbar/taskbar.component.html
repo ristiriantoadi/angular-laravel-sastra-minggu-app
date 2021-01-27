@@ -3,6 +3,6 @@
         <button type="button" (click)="this.taskbarEvent.emit({event:'open addEntriModal'})" class="mb-3 btn btn-primary">Tambah Entri</button>
     </div>
     <div class="col-md-10">
-        <app-pencarian (searchDone)="fireEventSearchDone($event)"></app-pencarian>
+        <app-pencarian (searchDone)="this.taskbarEvent.emit($event)"></app-pencarian>
     </div> 
 </div>

@@ -7,9 +7,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TaskbarComponent implements OnInit {
 
-  // event
-  messageSearchDone
-
   @Output() public taskbarEvent = new EventEmitter();
 
   constructor() { }

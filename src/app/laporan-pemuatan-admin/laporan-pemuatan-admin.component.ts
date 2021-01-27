@@ -46,11 +46,11 @@ export class LaporanPemuatanAdminComponent implements OnInit {
     });
   }
 
-  acceptTaskbarEvent(message){
-    if(message.event == "open addEntriModal"){
+  acceptTaskbarEvent(event){
+    if(event.event == "open addEntriModal"){
       this.openAddEntriModal()
-    }else if(message.event == "search done"){
-      this.entris = message.data
+    }else if(event.event == "search done"){
+      this.entris = event.data
     }
   }
 

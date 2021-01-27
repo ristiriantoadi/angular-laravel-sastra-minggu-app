@@ -25,5 +25,6 @@ export class GuestComponent implements OnInit {
       console.log(error)
     })
   }
+  
 
 }
