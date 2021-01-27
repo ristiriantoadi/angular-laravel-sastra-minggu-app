@@ -19,7 +19,8 @@ import { NotifikasiComponent } from './notifikasi/notifikasi.component';
 import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.component';
 import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.component';
 import {NgxPaginationModule} from "ngx-pagination";
-import { PencarianComponent } from './pencarian/pencarian.component'
+import { PencarianComponent } from './pencarian/pencarian.component';
+import { TaskbarComponent } from './taskbar/taskbar.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PencarianComponent } from './pencarian/pencarian.component'
     NotifikasiComponent,
     AddEntriModalComponent,
     EditEntriModalComponent,
-    PencarianComponent
+    PencarianComponent,
+    TaskbarComponent
   ],
   imports: [
     BrowserModule,

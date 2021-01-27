@@ -46,6 +46,14 @@ export class LaporanPemuatanAdminComponent implements OnInit {
     });
   }
 
+  acceptTaskbarEvent(message){
+    if(message.event == "open addEntriModal"){
+      this.openAddEntriModal()
+    }else if(message.event == "search done"){
+      this.entris = message.data
+    }
+  }
+
   
   hapusEntri(id:any){
     if(confirm("Anda yakin ingin menghapus entri?")){

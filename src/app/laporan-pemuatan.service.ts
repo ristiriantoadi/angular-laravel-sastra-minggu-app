@@ -88,4 +88,13 @@ export class LaporanPemuatanService {
     )
   }
 
+  search(dataPencarian):Observable<any>{
+    return this.http.get(`api/laporan_pemuatan/search?namaJudulMedia=${dataPencarian.namaJudulMedia}
+    &tanggalMuatAwal=${dataPencarian.tanggalMuatAwal}&tanggalMuatAkhir=${dataPencarian.tanggalMuatAkhir}`).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
 }
