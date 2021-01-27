@@ -15,12 +15,12 @@ import { RegisterModalComponent } from './register-modal/register-modal.componen
 import { LaporanPemuatanAdminComponent } from './laporan-pemuatan-admin/laporan-pemuatan-admin.component';
 import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pemuatan-user.component';
 import { ReportComponent } from './report/report.component';
-import { NotifikasiComponent } from './notifikasi/notifikasi.component';
 import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.component';
 import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { PencarianComponent } from './pencarian/pencarian.component';
-import { TaskbarComponent } from './taskbar/taskbar.component'
+import { TaskbarComponent } from './taskbar/taskbar.component';
+import { KaryaSayaComponent } from './karya-saya/karya-saya.component'
 
 @NgModule({
   declarations: [
@@ -35,11 +35,11 @@ import { TaskbarComponent } from './taskbar/taskbar.component'
     LaporanPemuatanAdminComponent,
     LaporanPemuatanUserComponent,
     ReportComponent,
-    NotifikasiComponent,
     AddEntriModalComponent,
     EditEntriModalComponent,
     PencarianComponent,
-    TaskbarComponent
+    TaskbarComponent,
+    KaryaSayaComponent
   ],
   imports: [
     BrowserModule,

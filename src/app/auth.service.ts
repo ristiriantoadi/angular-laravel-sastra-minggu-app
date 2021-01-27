@@ -62,6 +62,10 @@ export class AuthService {
     return localStorage.getItem("username");
   }
 
+  getUserId(){
+    return localStorage.getItem("id");
+  }
+
   logout(){
     return this.http.post("/logout",{},{ withCredentials: true }).pipe(
       catchError((error:HttpErrorResponse)=>{

@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable,throwError } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LaporanPemuatanService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private authService:AuthService) { }
 
   addEntri(entri,modal){
     //create form data object
@@ -91,6 +92,15 @@ export class LaporanPemuatanService {
   search(dataPencarian):Observable<any>{
     return this.http.get(`api/laporan_pemuatan/search?namaJudulMedia=${dataPencarian.namaJudulMedia}
     &tanggalMuatAwal=${dataPencarian.tanggalMuatAwal}&tanggalMuatAkhir=${dataPencarian.tanggalMuatAkhir}`).pipe(
+      catchError((error:HttpErrorResponse)=>{
+        return throwError(error || "server error")
+      })
+    )
+  }
+
+  getEntriSpecificUserPengarang():Observable<any>{
+    const idUser = this.authService.getUserId();
+    return this.http.get(`api/laporan_pemuatan/user/${idUser}`).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })

@@ -1,0 +1,34 @@
+<div class="card">
+    <h5 class="card-header">Karya Saya</h5>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nama Pengarang</th>
+                    <th scope="col">Judul</th>
+                    <th scope="col">Jenis</th>
+                    <th scope="col">Media</th>
+                    <th scope="col">Tanggal Terbit</th>
+                    <th scope="col">Bukti Pemuatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entri of entris | paginate: {id:'listing_pagination',
+                    itemsPerPage:10,currentPage:currentPage,totalItems:totalRecords} ">
+                    <td>{{entri.nama_lengkap}}</td>
+                    <td>{{entri.judul_karya}}</td>
+                    <td>{{entri.jenis_karya}}</td>
+                    <td>{{entri.media}}</td>
+                    <td>{{entri.tanggal_muat}}</td>
+                    <td>
+                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id,entri.bukti_pemuatan]">Link</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <pagination-controls id="listing_pagination" maxSize="10" directionLinks="true" 
+                (pageChange)="currentPage=$event"></pagination-controls>
+        </div>
+    </div>
+</div>

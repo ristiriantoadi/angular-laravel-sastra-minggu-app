@@ -4,15 +4,15 @@
         <div class="col-sm-2">
             <ul class="nav flex-sm-column">
                 <li class="nav-item">
-                  <a class="nav-link active" routerLinkActive="active" routerLink="laporan_pemuatan">Laporan Pemuatan</a>
+                  <a class="nav-link" routerLinkActive="active" routerLink="laporan_pemuatan">Laporan Pemuatan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLinkActive="active" routerLink="notifikasi">Notifikasi</a>
+                  <a class="nav-link" (click)="readNotifications()" routerLinkActive="active" routerLink="karya_saya">Karya saya <span *ngIf="notificationsAmount>0" class="badge badge-pill badge-info">{{notificationsAmount}}</span></a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-10">
-            <app-laporan-pemuatan-user></app-laporan-pemuatan-user>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
