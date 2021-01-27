@@ -38,7 +38,7 @@ export class LaporanPemuatanService {
   
   //get all entri of laporan pemuatan
   getLaporanPemuatan():Observable<any>{
-    return this.http.get<any>("api/laporan_pemuatan").pipe(
+    return this.http.get<any>("api/laporan_pemuatan",{withCredentials:true}).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
       })

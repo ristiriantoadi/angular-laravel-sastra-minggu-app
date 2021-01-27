@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 
 @Component({
   selector: 'app-laporan-pemuatan-user',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaporanPemuatanUserComponent implements OnInit {
 
-  constructor() { }
+  entris
+  totalRecords
+  currentPage=1
+
+  constructor(private laporanPemuatanService:LaporanPemuatanService) { }
 
   ngOnInit(): void {
+    this.updateDataLaporanPemuatan()
+  }
+
+  updateDataLaporanPemuatan(){
+    this.laporanPemuatanService.getLaporanPemuatan()
+    .subscribe(data=>{
+      this.entris = data.entris
+      this.totalRecords = this.entris.length;
+      console.log(this.entris);
+    },
+    error=>{
+      console.log(error)
+    })
   }
 
 }

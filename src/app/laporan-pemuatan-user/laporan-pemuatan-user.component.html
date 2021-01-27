@@ -10,20 +10,30 @@
                     <th scope="col">Media</th>
                     <th scope="col">Tanggal Terbit</th>
                     <th scope="col">Bukti Pemuatan</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Ristirianto Adi</td>
-                    <td>Tidak Ada Pesan Moral</td>
-                    <td>Cerpen</td>
-                    <td>Horison</td>
-                    <td>2021/01/12</td>
+                <tr *ngFor="let entri of entris | paginate: {id:'listing_pagination',
+                    itemsPerPage:10,currentPage:currentPage,totalItems:totalRecords} ">
+                    <td>{{entri.nama_lengkap}}</td>
+                    <td>{{entri.judul_karya}}</td>
+                    <td>{{entri.jenis_karya}}</td>
+                    <td>{{entri.media}}</td>
+                    <td>{{entri.tanggal_muat}}</td>
                     <td>
-                        <a href="#">Link</a>
+                        <a [routerLink]="['/storage/bukti_pemuatan',entri.id,entri.bukti_pemuatan]">Link</a>
+                    </td>
+                    <td>
+                        <button type="button" [disabled]="!entri.editable" (click)="editEntri(entri.id)" class="btn btn-warning mr-2">Edit</button>
+                        <button type="button" [disabled]="!entri.editable" (click)="hapusEntri(entri.id)" class="btn btn-danger">Hapus</button>
                     </td>
                 </tr>
             </tbody>
           </table>
+          <div>
+            <pagination-controls id="listing_pagination" maxSize="10" directionLinks="true" 
+                (pageChange)="currentPage=$event"></pagination-controls>
+        </div>
     </div>
 </div>
