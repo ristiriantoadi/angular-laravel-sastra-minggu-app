@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddEntriModalComponent } from '../add-entri-modal/add-entri-modal.component';
+import { EditEntriModalComponent } from '../edit-entri-modal/edit-entri-modal.component';
 import { LaporanPemuatanService } from '../laporan-pemuatan.service';
 
 @Component({
@@ -49,6 +50,34 @@ export class LaporanPemuatanUserComponent implements OnInit {
       this.openAddEntriModal()
     }else if(event.event == "search done"){
       this.entris = event.data
+    }
+  }
+
+  editEntri(id:any){
+    this.laporanPemuatanService.getEntriEdit(id)
+    .subscribe(data=>{
+      //open modal edit entri
+      const modalRef = this.modalService.open(EditEntriModalComponent);
+      modalRef.componentInstance.entri = data.entri;
+      modalRef.result.then((result) => {
+        this.updateDataLaporanPemuatan();
+      }, (reason) => {
+        console.log('Dismissed action: ' + reason);
+      });
+    },
+    error=>{
+      console.log(error)
+    })
+  }
+
+  hapusEntri(id:any){
+    if(confirm("Anda yakin ingin menghapus entri?")){
+      this.laporanPemuatanService.hapusEntri(id).subscribe(data=>{
+        this.updateDataLaporanPemuatan()
+      },
+      error=>{
+        console.log(error)
+      })
     }
   }
 
