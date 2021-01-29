@@ -98,6 +98,7 @@ export class LaporanPemuatanService {
     )
   }
 
+  //get all entris for which the user was the author / pengarang (not pembuat entri)
   getEntriSpecificUserPengarang():Observable<any>{
     const idUser = this.authService.getUserId();
     return this.http.get(`api/laporan_pemuatan/user/${idUser}`).pipe(

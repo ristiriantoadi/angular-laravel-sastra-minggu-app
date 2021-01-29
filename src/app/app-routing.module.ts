@@ -9,14 +9,12 @@ import { KaryaSayaComponent } from './karya-saya/karya-saya.component';
 import { LaporanPemuatanAdminComponent } from './laporan-pemuatan-admin/laporan-pemuatan-admin.component';
 import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pemuatan-user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {path:'',component:GuestComponent,canActivate: [AuthGuardGuestService]},
   {path:'admin',component:AdminComponent,canActivate: [AuthGuardAdminService],children:[
-    {path:'laporan_pemuatan',component:LaporanPemuatanAdminComponent},
-    {path:'report',component:ReportComponent}
+    {path:'laporan_pemuatan',component:LaporanPemuatanAdminComponent}
   ]},
   {path:'user',component:UserComponent,canActivate: [AuthGuardUserService],children:[
     {path:'laporan_pemuatan',component:LaporanPemuatanUserComponent},

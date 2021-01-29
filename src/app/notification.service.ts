@@ -11,7 +11,7 @@ export class NotificationService {
 
   constructor(private http:HttpClient,private authService:AuthService) { }
 
-  getNotifications():Observable<any>{ //http request done in here
+  getNotifications():Observable<any>{
     return this.http.get<any>("/api/user/notifications",{withCredentials:true}).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
@@ -19,7 +19,8 @@ export class NotificationService {
     )
   }
 
-  readNotifications():Observable<any>{ //http request done in here
+  //mark notifications as read
+  readNotifications():Observable<any>{
     return this.http.post<any>("/api/user/notifications",{},{withCredentials:true}).pipe(
       catchError((error:HttpErrorResponse)=>{
         return throwError(error || "server error")
