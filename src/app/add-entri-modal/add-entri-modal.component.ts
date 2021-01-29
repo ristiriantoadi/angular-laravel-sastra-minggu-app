@@ -106,7 +106,7 @@ export class AddEntriModalComponent implements OnInit {
   }
 
   isFileGambar(){
-    var format=this.fileBuktiPemuatan.name.split(".")[1]
+    var format=this.fileBuktiPemuatan.name.split(".")[this.fileBuktiPemuatan.name.split(".").length-1]
     if(format == "jpg" || format == "png" || format == "jpeg"){
       return true;
     }

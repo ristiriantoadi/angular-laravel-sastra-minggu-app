@@ -34,7 +34,6 @@ import { KaryaSayaComponent } from './karya-saya/karya-saya.component'
     RegisterModalComponent,
     LaporanPemuatanAdminComponent,
     LaporanPemuatanUserComponent,
-    ReportComponent,
     AddEntriModalComponent,
     EditEntriModalComponent,
     PencarianComponent,
