@@ -10,21 +10,17 @@ import { LaporanPemuatanService } from '../laporan-pemuatan.service';
   styleUrls: ['./edit-entri-modal.component.css']
 })
 export class EditEntriModalComponent implements OnInit {
-
+  
   pengarangs=[]
   idPengarang=0
   fileBuktiPemuatan
-
   namaPengarangChanged=false
-
   errorFileBukanGambar=false;
   errorJudulKosong=false;
   errorNamaPengarangKosong=false;
   errorMediaKosong = false;
   errorTanggalMuatKosong = false;
-
   @Input() entri;
-
   editEntriForm = this.formBuilder.group({
     judul: '',
     namaPengarang:'',
@@ -38,13 +34,11 @@ export class EditEntriModalComponent implements OnInit {
               private laporanPemuatanService:LaporanPemuatanService) {}
 
   ngOnInit(): void {
-
     this.editEntriForm.controls['judul'].setValue(this.entri.judul_karya);
     this.editEntriForm.controls['namaPengarang'].setValue(this.entri.nama_pengarang);
     this.editEntriForm.controls['media'].setValue(this.entri.media);
     this.editEntriForm.controls['tanggalMuat'].setValue(this.entri.tanggal_muat);
     this.editEntriForm.controls['jenisKarya'].setValue(this.entri.jenis_karya);
-    
   }
 
   handleFileInput(files: FileList) {
@@ -53,10 +47,8 @@ export class EditEntriModalComponent implements OnInit {
   }
 
   namaPengarangChosen(){
-    
     //get the namaPengarang value from form
     var namaPengarangChosen = this.editEntriForm.value.namaPengarang
-
     //search through the pengarangs data to see what pengarang match
     var pengarangMatch=false
     this.pengarangs.forEach((pengarang)=>{
@@ -81,15 +73,12 @@ export class EditEntriModalComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("submit")
-
     //reset error message
     this.errorFileBukanGambar=false;
     this.errorJudulKosong=false;
     this.errorMediaKosong=false;
     this.errorNamaPengarangKosong=false;
     this.errorTanggalMuatKosong=false;
-
     //cek apakah form tidak lengkap
     if(this.editEntriForm.value.judul == '' || this.editEntriForm.value.namaPengarang == '' 
     || this.editEntriForm.value.media == '' || this.editEntriForm.value.tanggalMuat == ''
@@ -98,22 +87,17 @@ export class EditEntriModalComponent implements OnInit {
       if(this.editEntriForm.value.judul == '' || this.editEntriForm.value.judul == null){
         this.errorJudulKosong = true;
       }
-
       if(this.editEntriForm.value.namaPengarang == '' || this.editEntriForm.value.namaPengarang == null){
         this.errorNamaPengarangKosong = true;
       }
-      
       if(this.editEntriForm.value.media == '' || this.editEntriForm.value.media == null){
         this.errorMediaKosong = true;
       }
-
       if(this.editEntriForm.value.tanggalMuat == '' || this.editEntriForm.value.tanggalMuat == null){
         this.errorTanggalMuatKosong = true;
       }
-
       return;
     }
-
     //cek apakah file adalah gambar
     if(this.fileBuktiPemuatan){
       if(!this.isFileGambar()){
@@ -121,11 +105,9 @@ export class EditEntriModalComponent implements OnInit {
         return;
       }
     }
-
     if(!this.namaPengarangChanged){ 
       this.idPengarang = this.entri.user_id_pengarang
     }
-
     const entri = {
       judul:this.editEntriForm.value.judul,
       namaPengarang:this.editEntriForm.value.namaPengarang,
@@ -136,9 +118,6 @@ export class EditEntriModalComponent implements OnInit {
       id:this.entri.id,
       idPengarang:this.idPengarang
     }
-
-    console.log(entri);
-
     this.laporanPemuatanService.editEntri(entri)
     .subscribe(data=>{
       this.activeModal.close("success")
