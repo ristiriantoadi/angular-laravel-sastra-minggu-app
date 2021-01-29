@@ -21,7 +21,6 @@ export class LaporanPemuatanAdminComponent implements OnInit {
     this.updateDataLaporanPemuatan();
   }
 
-  
   updateDataLaporanPemuatan(){
     this.laporanPemuatanService.getLaporanPemuatan()
     .subscribe(data=>{
@@ -33,11 +32,9 @@ export class LaporanPemuatanAdminComponent implements OnInit {
     })
   }
   
-
   openAddEntriModal(){
     //open modal
-    const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true});
-    
+    const modalRef = this.modalService.open(AddEntriModalComponent,{ size: 'xl',centered:true});  
     //callback when adding entri is done
     modalRef.result.then((result) => {
       this.updateDataLaporanPemuatan();
@@ -54,7 +51,6 @@ export class LaporanPemuatanAdminComponent implements OnInit {
     }
   }
 
-  
   hapusEntri(id:any){
     if(confirm("Anda yakin ingin menghapus entri?")){
       this.laporanPemuatanService.hapusEntri(id).subscribe(data=>{
@@ -82,7 +78,5 @@ export class LaporanPemuatanAdminComponent implements OnInit {
       console.log(error)
     })
   }
-
-  
 
 }
