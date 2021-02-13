@@ -14,7 +14,6 @@ import { HttpClientModule,HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angul
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { LaporanPemuatanAdminComponent } from './laporan-pemuatan-admin/laporan-pemuatan-admin.component';
 import { LaporanPemuatanUserComponent } from './laporan-pemuatan-user/laporan-pemuatan-user.component';
-import { ReportComponent } from './report/report.component';
 import { AddEntriModalComponent } from './add-entri-modal/add-entri-modal.component';
 import { EditEntriModalComponent } from './edit-entri-modal/edit-entri-modal.component';
 import {NgxPaginationModule} from "ngx-pagination";
